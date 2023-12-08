@@ -14,10 +14,11 @@ class NavRail extends ConsumerWidget {
       onDestinationSelected: (value) {
         ref.read(selectedViewIndexProvider.notifier).setIndex(value);
       },
+      elevation: 4,
       destinations: const [
         NavigationRailDestination(
-          icon: Icon(Icons.favorite_border),
-          selectedIcon: Icon(Icons.favorite),
+          icon: Icon(Icons.home),
+          selectedIcon: Icon(Icons.home_filled),
           label: Text('First'),
         ),
         NavigationRailDestination(
