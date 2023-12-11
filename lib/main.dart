@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:organiza_ai/controllers/go_router.dart';
 import 'package:organiza_ai/controllers/responsiness.dart';
-import 'package:organiza_ai/views/main_view.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {

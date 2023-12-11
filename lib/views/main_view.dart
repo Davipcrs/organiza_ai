@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:organiza_ai/controllers/responsiness.dart';
 import 'package:organiza_ai/views/nav_rail.dart';
+import 'package:organiza_ai/views/notes.dart';
 
 class MainView extends ConsumerStatefulWidget {
   const MainView({super.key});
@@ -20,7 +21,7 @@ class _MainViewState extends ConsumerState<MainView> {
         children: [
           NavRail(),
           VerticalDivider(thickness: 1, width: 1),
-          Expanded(child: Placeholder())
+          Expanded(child: NotesView()),
         ],
       ),
       drawer: isDrawer ? const Drawer() : null,
