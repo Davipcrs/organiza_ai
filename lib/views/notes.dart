@@ -19,19 +19,21 @@ class _NotesViewState extends ConsumerState<NotesView> {
             delegate: SliverChildBuilderDelegate(
               childCount: 20,
               (context, index) {
-                return Container(
-                  color: Theme.of(context).colorScheme.primary,
-                  child: Column(
-                    children: [
-                      Center(
-                        child: Text(
-                          "$index",
-                          style: TextStyle(
-                              fontSize: 20,
-                              color: Theme.of(context).colorScheme.onPrimary),
+                return InkWell(
+                  child: Container(
+                    color: Theme.of(context).colorScheme.primary,
+                    child: Column(
+                      children: [
+                        Center(
+                          child: Text(
+                            "$index",
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Theme.of(context).colorScheme.onPrimary),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 );
               },

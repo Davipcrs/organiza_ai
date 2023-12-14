@@ -15,6 +15,10 @@ class NavRail extends ConsumerWidget {
         ref.read(selectedViewIndexProvider.notifier).setIndex(value);
       },
       elevation: 4,
+      leading: ElevatedButton(
+        onPressed: () {},
+        child: const Center(child: Icon(Icons.add)),
+      ),
       destinations: const [
         NavigationRailDestination(
           icon: Icon(Icons.home),
