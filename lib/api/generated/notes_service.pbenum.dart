@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: lib/api/notes_service.proto
+//  source: notes_service.proto
 //
 // @dart = 2.12
 

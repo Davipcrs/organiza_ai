@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: lib/api/notes_service.proto
+//  source: notes_service.proto
 //
 // @dart = 2.12
 
@@ -9,7 +9,6 @@
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
-import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:fixnum/fixnum.dart' as $fixnum;
@@ -47,8 +46,8 @@ class empty extends $pb.GeneratedMessage {
   static empty? _defaultInstance;
 }
 
-class Note extends $pb.GeneratedMessage {
-  factory Note({
+class NoteMessage extends $pb.GeneratedMessage {
+  factory NoteMessage({
     $fixnum.Int64? id,
     $core.String? title,
     $core.String? desc,
@@ -73,11 +72,11 @@ class Note extends $pb.GeneratedMessage {
     }
     return $result;
   }
-  Note._() : super();
-  factory Note.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Note.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  NoteMessage._() : super();
+  factory NoteMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory NoteMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Note', package: const $pb.PackageName(_omitMessageNames ? '' : 'organiza_ai'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'NoteMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'organiza_ai'), createEmptyInstance: create)
     ..aInt64(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'title')
     ..aOS(3, _omitFieldNames ? '' : 'desc')
@@ -90,22 +89,22 @@ class Note extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  Note clone() => Note()..mergeFromMessage(this);
+  NoteMessage clone() => NoteMessage()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  Note copyWith(void Function(Note) updates) => super.copyWith((message) => updates(message as Note)) as Note;
+  NoteMessage copyWith(void Function(NoteMessage) updates) => super.copyWith((message) => updates(message as NoteMessage)) as NoteMessage;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static Note create() => Note._();
-  Note createEmptyInstance() => create();
-  static $pb.PbList<Note> createRepeated() => $pb.PbList<Note>();
+  static NoteMessage create() => NoteMessage._();
+  NoteMessage createEmptyInstance() => create();
+  static $pb.PbList<NoteMessage> createRepeated() => $pb.PbList<NoteMessage>();
   @$core.pragma('dart2js:noInline')
-  static Note getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Note>(create);
-  static Note? _defaultInstance;
+  static NoteMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<NoteMessage>(create);
+  static NoteMessage? _defaultInstance;
 
   @$pb.TagNumber(1)
   $fixnum.Int64 get id => $_getI64(0);
@@ -247,7 +246,7 @@ class AddNote extends $pb.GeneratedMessage {
 
 class NoteResponse extends $pb.GeneratedMessage {
   factory NoteResponse({
-    $core.Iterable<Note>? note,
+    $core.Iterable<NoteMessage>? note,
   }) {
     final $result = create();
     if (note != null) {
@@ -260,7 +259,7 @@ class NoteResponse extends $pb.GeneratedMessage {
   factory NoteResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'NoteResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'organiza_ai'), createEmptyInstance: create)
-    ..pc<Note>(1, _omitFieldNames ? '' : 'note', $pb.PbFieldType.PM, subBuilder: Note.create)
+    ..pc<NoteMessage>(1, _omitFieldNames ? '' : 'note', $pb.PbFieldType.PM, subBuilder: NoteMessage.create)
     ..hasRequiredFields = false
   ;
 
@@ -286,7 +285,7 @@ class NoteResponse extends $pb.GeneratedMessage {
   static NoteResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<Note> get note => $_getList(0);
+  $core.List<NoteMessage> get note => $_getList(0);
 }
 
 class SearchNoteRequest extends $pb.GeneratedMessage {
@@ -337,27 +336,6 @@ class SearchNoteRequest extends $pb.GeneratedMessage {
   $core.bool hasId() => $_has(0);
   @$pb.TagNumber(1)
   void clearId() => clearField(1);
-}
-
-class NotesServicesApi {
-  $pb.RpcClient _client;
-  NotesServicesApi(this._client);
-
-  $async.Future<Note> getNote($pb.ClientContext? ctx, SearchNoteRequest request) =>
-    _client.invoke<Note>(ctx, 'NotesServices', 'getNote', request, Note())
-  ;
-  $async.Future<NoteResponse> getAllNotes($pb.ClientContext? ctx, empty request) =>
-    _client.invoke<NoteResponse>(ctx, 'NotesServices', 'getAllNotes', request, NoteResponse())
-  ;
-  $async.Future<empty> addNote($pb.ClientContext? ctx, AddNote request) =>
-    _client.invoke<empty>(ctx, 'NotesServices', 'addNote', request, empty())
-  ;
-  $async.Future<Note> removeNote($pb.ClientContext? ctx, SearchNoteRequest request) =>
-    _client.invoke<Note>(ctx, 'NotesServices', 'removeNote', request, Note())
-  ;
-  $async.Future<Note> editNote($pb.ClientContext? ctx, Note request) =>
-    _client.invoke<Note>(ctx, 'NotesServices', 'editNote', request, Note())
-  ;
 }
 
 

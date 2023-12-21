@@ -35,5 +35,5 @@ message SearchNoteRequest{
     int64 id = 1;
 }
 
-// python3 -m grpc_tools.protoc --proto_path=. ./notes_services.proto --python_out=. --grpc_python_out=.
-//protoc --proto_path=lib/api/ --dart_out=. ./lib/api/notes_services.proto
+// python3 -m grpc_tools.protoc --proto_path=. ./notes_service.proto --python_out=. --grpc_python_out=.
+//protoc --proto_path=lib/api/ --dart_out=grpc:./lib/api/generated ./lib/api/notes_service.proto
