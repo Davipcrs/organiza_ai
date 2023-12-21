@@ -3,17 +3,17 @@ syntax="proto3";
 package organiza_ai;
 
 service NotesServices{
-    rpc getNote(SearchNoteRequest) returns (Note);
+    rpc getNote(SearchNoteRequest) returns (NoteMessage);
     rpc getAllNotes(empty) returns (NoteResponse);
     rpc addNote(AddNote) returns (empty);
-    rpc removeNote(SearchNoteRequest) returns (Note);
-    rpc editNote(Note) returns (Note);
+    rpc removeNote(SearchNoteRequest) returns (NoteMessage);
+    rpc editNote(NoteMessage) returns (NoteMessage);
 }
 message empty{
 
 }
 
-message Note{
+message NoteMessage{
     int64 id = 1;
     string title = 2;
     string desc = 3;
@@ -28,7 +28,7 @@ message AddNote{
     string deadline = 4;
 }
 message NoteResponse{
-    repeated Note note = 1;
+    repeated NoteMessage note = 1;
 }
 
 message SearchNoteRequest{
