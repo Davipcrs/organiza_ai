@@ -30,31 +30,32 @@ const NoteMessage$json = {
     {'1': 'title', '3': 2, '4': 1, '5': 9, '10': 'title'},
     {'1': 'desc', '3': 3, '4': 1, '5': 9, '10': 'desc'},
     {'1': 'created', '3': 4, '4': 1, '5': 9, '10': 'created'},
-    {'1': 'deadline', '3': 5, '4': 1, '5': 9, '10': 'deadline'},
+    {'1': 'deadLine', '3': 5, '4': 1, '5': 9, '10': 'deadLine'},
   ],
 };
 
 /// Descriptor for `NoteMessage`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List noteMessageDescriptor = $convert.base64Decode(
     'CgtOb3RlTWVzc2FnZRIOCgJpZBgBIAEoA1ICaWQSFAoFdGl0bGUYAiABKAlSBXRpdGxlEhIKBG'
-    'Rlc2MYAyABKAlSBGRlc2MSGAoHY3JlYXRlZBgEIAEoCVIHY3JlYXRlZBIaCghkZWFkbGluZRgF'
-    'IAEoCVIIZGVhZGxpbmU=');
+    'Rlc2MYAyABKAlSBGRlc2MSGAoHY3JlYXRlZBgEIAEoCVIHY3JlYXRlZBIaCghkZWFkTGluZRgF'
+    'IAEoCVIIZGVhZExpbmU=');
 
-@$core.Deprecated('Use addNoteDescriptor instead')
-const AddNote$json = {
-  '1': 'AddNote',
+@$core.Deprecated('Use addNoteMessageDescriptor instead')
+const AddNoteMessage$json = {
+  '1': 'AddNoteMessage',
   '2': [
     {'1': 'title', '3': 1, '4': 1, '5': 9, '10': 'title'},
     {'1': 'desc', '3': 2, '4': 1, '5': 9, '10': 'desc'},
     {'1': 'created', '3': 3, '4': 1, '5': 9, '10': 'created'},
-    {'1': 'deadline', '3': 4, '4': 1, '5': 9, '10': 'deadline'},
+    {'1': 'deadLine', '3': 4, '4': 1, '5': 9, '10': 'deadLine'},
   ],
 };
 
-/// Descriptor for `AddNote`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List addNoteDescriptor = $convert.base64Decode(
-    'CgdBZGROb3RlEhQKBXRpdGxlGAEgASgJUgV0aXRsZRISCgRkZXNjGAIgASgJUgRkZXNjEhgKB2'
-    'NyZWF0ZWQYAyABKAlSB2NyZWF0ZWQSGgoIZGVhZGxpbmUYBCABKAlSCGRlYWRsaW5l');
+/// Descriptor for `AddNoteMessage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List addNoteMessageDescriptor = $convert.base64Decode(
+    'Cg5BZGROb3RlTWVzc2FnZRIUCgV0aXRsZRgBIAEoCVIFdGl0bGUSEgoEZGVzYxgCIAEoCVIEZG'
+    'VzYxIYCgdjcmVhdGVkGAMgASgJUgdjcmVhdGVkEhoKCGRlYWRMaW5lGAQgASgJUghkZWFkTGlu'
+    'ZQ==');
 
 @$core.Deprecated('Use noteResponseDescriptor instead')
 const NoteResponse$json = {

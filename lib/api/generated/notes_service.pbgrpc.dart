@@ -29,14 +29,14 @@ class NotesServicesClient extends $grpc.Client {
       '/organiza_ai.NotesServices/getAllNotes',
       ($0.empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.NoteResponse.fromBuffer(value));
-  static final _$addNote = $grpc.ClientMethod<$0.AddNote, $0.empty>(
+  static final _$addNote = $grpc.ClientMethod<$0.AddNoteMessage, $0.empty>(
       '/organiza_ai.NotesServices/addNote',
-      ($0.AddNote value) => value.writeToBuffer(),
+      ($0.AddNoteMessage value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.empty.fromBuffer(value));
-  static final _$removeNote = $grpc.ClientMethod<$0.SearchNoteRequest, $0.NoteMessage>(
+  static final _$removeNote = $grpc.ClientMethod<$0.SearchNoteRequest, $0.empty>(
       '/organiza_ai.NotesServices/removeNote',
       ($0.SearchNoteRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.NoteMessage.fromBuffer(value));
+      ($core.List<$core.int> value) => $0.empty.fromBuffer(value));
   static final _$editNote = $grpc.ClientMethod<$0.NoteMessage, $0.NoteMessage>(
       '/organiza_ai.NotesServices/editNote',
       ($0.NoteMessage value) => value.writeToBuffer(),
@@ -56,11 +56,11 @@ class NotesServicesClient extends $grpc.Client {
     return $createUnaryCall(_$getAllNotes, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.empty> addNote($0.AddNote request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$0.empty> addNote($0.AddNoteMessage request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$addNote, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.NoteMessage> removeNote($0.SearchNoteRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$0.empty> removeNote($0.SearchNoteRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$removeNote, request, options: options);
   }
 
@@ -88,20 +88,20 @@ abstract class NotesServicesServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.empty.fromBuffer(value),
         ($0.NoteResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.AddNote, $0.empty>(
+    $addMethod($grpc.ServiceMethod<$0.AddNoteMessage, $0.empty>(
         'addNote',
         addNote_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.AddNote.fromBuffer(value),
+        ($core.List<$core.int> value) => $0.AddNoteMessage.fromBuffer(value),
         ($0.empty value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.SearchNoteRequest, $0.NoteMessage>(
+    $addMethod($grpc.ServiceMethod<$0.SearchNoteRequest, $0.empty>(
         'removeNote',
         removeNote_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.SearchNoteRequest.fromBuffer(value),
-        ($0.NoteMessage value) => value.writeToBuffer()));
+        ($0.empty value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.NoteMessage, $0.NoteMessage>(
         'editNote',
         editNote_Pre,
@@ -119,11 +119,11 @@ abstract class NotesServicesServiceBase extends $grpc.Service {
     return getAllNotes(call, await request);
   }
 
-  $async.Future<$0.empty> addNote_Pre($grpc.ServiceCall call, $async.Future<$0.AddNote> request) async {
+  $async.Future<$0.empty> addNote_Pre($grpc.ServiceCall call, $async.Future<$0.AddNoteMessage> request) async {
     return addNote(call, await request);
   }
 
-  $async.Future<$0.NoteMessage> removeNote_Pre($grpc.ServiceCall call, $async.Future<$0.SearchNoteRequest> request) async {
+  $async.Future<$0.empty> removeNote_Pre($grpc.ServiceCall call, $async.Future<$0.SearchNoteRequest> request) async {
     return removeNote(call, await request);
   }
 
@@ -133,7 +133,7 @@ abstract class NotesServicesServiceBase extends $grpc.Service {
 
   $async.Future<$0.NoteMessage> getNote($grpc.ServiceCall call, $0.SearchNoteRequest request);
   $async.Future<$0.NoteResponse> getAllNotes($grpc.ServiceCall call, $0.empty request);
-  $async.Future<$0.empty> addNote($grpc.ServiceCall call, $0.AddNote request);
-  $async.Future<$0.NoteMessage> removeNote($grpc.ServiceCall call, $0.SearchNoteRequest request);
+  $async.Future<$0.empty> addNote($grpc.ServiceCall call, $0.AddNoteMessage request);
+  $async.Future<$0.empty> removeNote($grpc.ServiceCall call, $0.SearchNoteRequest request);
   $async.Future<$0.NoteMessage> editNote($grpc.ServiceCall call, $0.NoteMessage request);
 }

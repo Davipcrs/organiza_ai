@@ -52,7 +52,7 @@ class NoteMessage extends $pb.GeneratedMessage {
     $core.String? title,
     $core.String? desc,
     $core.String? created,
-    $core.String? deadline,
+    $core.String? deadLine,
   }) {
     final $result = create();
     if (id != null) {
@@ -67,8 +67,8 @@ class NoteMessage extends $pb.GeneratedMessage {
     if (created != null) {
       $result.created = created;
     }
-    if (deadline != null) {
-      $result.deadline = deadline;
+    if (deadLine != null) {
+      $result.deadLine = deadLine;
     }
     return $result;
   }
@@ -81,7 +81,7 @@ class NoteMessage extends $pb.GeneratedMessage {
     ..aOS(2, _omitFieldNames ? '' : 'title')
     ..aOS(3, _omitFieldNames ? '' : 'desc')
     ..aOS(4, _omitFieldNames ? '' : 'created')
-    ..aOS(5, _omitFieldNames ? '' : 'deadline')
+    ..aOS(5, _omitFieldNames ? '' : 'deadLine', protoName: 'deadLine')
     ..hasRequiredFields = false
   ;
 
@@ -143,21 +143,21 @@ class NoteMessage extends $pb.GeneratedMessage {
   void clearCreated() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.String get deadline => $_getSZ(4);
+  $core.String get deadLine => $_getSZ(4);
   @$pb.TagNumber(5)
-  set deadline($core.String v) { $_setString(4, v); }
+  set deadLine($core.String v) { $_setString(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasDeadline() => $_has(4);
+  $core.bool hasDeadLine() => $_has(4);
   @$pb.TagNumber(5)
-  void clearDeadline() => clearField(5);
+  void clearDeadLine() => clearField(5);
 }
 
-class AddNote extends $pb.GeneratedMessage {
-  factory AddNote({
+class AddNoteMessage extends $pb.GeneratedMessage {
+  factory AddNoteMessage({
     $core.String? title,
     $core.String? desc,
     $core.String? created,
-    $core.String? deadline,
+    $core.String? deadLine,
   }) {
     final $result = create();
     if (title != null) {
@@ -169,20 +169,20 @@ class AddNote extends $pb.GeneratedMessage {
     if (created != null) {
       $result.created = created;
     }
-    if (deadline != null) {
-      $result.deadline = deadline;
+    if (deadLine != null) {
+      $result.deadLine = deadLine;
     }
     return $result;
   }
-  AddNote._() : super();
-  factory AddNote.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory AddNote.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  AddNoteMessage._() : super();
+  factory AddNoteMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AddNoteMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'AddNote', package: const $pb.PackageName(_omitMessageNames ? '' : 'organiza_ai'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'AddNoteMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'organiza_ai'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'title')
     ..aOS(2, _omitFieldNames ? '' : 'desc')
     ..aOS(3, _omitFieldNames ? '' : 'created')
-    ..aOS(4, _omitFieldNames ? '' : 'deadline')
+    ..aOS(4, _omitFieldNames ? '' : 'deadLine', protoName: 'deadLine')
     ..hasRequiredFields = false
   ;
 
@@ -190,22 +190,22 @@ class AddNote extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  AddNote clone() => AddNote()..mergeFromMessage(this);
+  AddNoteMessage clone() => AddNoteMessage()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  AddNote copyWith(void Function(AddNote) updates) => super.copyWith((message) => updates(message as AddNote)) as AddNote;
+  AddNoteMessage copyWith(void Function(AddNoteMessage) updates) => super.copyWith((message) => updates(message as AddNoteMessage)) as AddNoteMessage;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static AddNote create() => AddNote._();
-  AddNote createEmptyInstance() => create();
-  static $pb.PbList<AddNote> createRepeated() => $pb.PbList<AddNote>();
+  static AddNoteMessage create() => AddNoteMessage._();
+  AddNoteMessage createEmptyInstance() => create();
+  static $pb.PbList<AddNoteMessage> createRepeated() => $pb.PbList<AddNoteMessage>();
   @$core.pragma('dart2js:noInline')
-  static AddNote getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AddNote>(create);
-  static AddNote? _defaultInstance;
+  static AddNoteMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AddNoteMessage>(create);
+  static AddNoteMessage? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get title => $_getSZ(0);
@@ -235,13 +235,13 @@ class AddNote extends $pb.GeneratedMessage {
   void clearCreated() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get deadline => $_getSZ(3);
+  $core.String get deadLine => $_getSZ(3);
   @$pb.TagNumber(4)
-  set deadline($core.String v) { $_setString(3, v); }
+  set deadLine($core.String v) { $_setString(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasDeadline() => $_has(3);
+  $core.bool hasDeadLine() => $_has(3);
   @$pb.TagNumber(4)
-  void clearDeadline() => clearField(4);
+  void clearDeadLine() => clearField(4);
 }
 
 class NoteResponse extends $pb.GeneratedMessage {
