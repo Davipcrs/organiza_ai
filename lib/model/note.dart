@@ -1,3 +1,4 @@
+import 'package:fixnum/fixnum.dart';
 import 'package:organiza_ai/api/generated/notes_service.pb.dart';
 
 class Note {
@@ -20,11 +21,11 @@ class Note {
     this.deadLine = deadLine;
   }
 
-  Note? convert(NoteMessage noteMessage) {
+  void convertToNote(NoteMessage noteMessage) {
     Note auxiliar = Note();
     // convert string to dateTime;
-    DateTime? auxiliarCreated;
-    DateTime? auxiliarDeadLine;
+    DateTime? auxiliarCreated = DateTime.tryParse(noteMessage.created);
+    DateTime? auxiliarDeadLine = DateTime.tryParse(noteMessage.deadLine);
 
     auxiliar.create(
         id = noteMessage.id.toInt(),
@@ -32,7 +33,16 @@ class Note {
         desc = noteMessage.desc,
         created = auxiliarCreated,
         deadLine = auxiliarDeadLine);
+  }
 
-    return auxiliar;
+  NoteMessage convertToMessage() {
+    NoteMessage message = NoteMessage(
+      id: Int64(id!),
+      title: title,
+      desc: desc,
+      created: created?.toIso8601String(),
+      deadLine: deadLine?.toIso8601String(),
+    );
+    return message;
   }
 }

@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:organiza_ai/api/api_requests.dart';
 import 'package:organiza_ai/controllers/go_router.dart';
 import 'package:organiza_ai/controllers/responsiness.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-void main() {
+void main() async {
+  var a = ApiRequests(IP: "192.168.0.2", PORT: 50051);
+  var b = await a.getOneNote(2);
+  var list = await a.getNotes();
+  print(b);
+  print(b.title);
+  print(b.desc);
+  print(b.created);
+  print(b.id);
+  print(list);
   runApp(const ProviderScope(child: MainApp()));
 }
 
