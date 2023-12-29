@@ -14,6 +14,7 @@ class ApiRequests {
   }
 
   Future<List<Note>> getNotes() async {
+    // void -> Repeated (List of) NoteMessage
     List<Note> list = [];
     var allNotes = stub!.getAllNotes(empty());
     try {
@@ -31,6 +32,7 @@ class ApiRequests {
   }
 
   Future<Note> getOneNote(int id) async {
+    // SearchNoteMessage -> NoteMessage
     Note note = Note();
     note.convertToNote(
       await stub!.getNote(
@@ -41,6 +43,26 @@ class ApiRequests {
   }
 
   Future<void> addNote(Note note) async {
+    // AddNoteMessage -> SearchNoteMessage
+    // NEED TO RETURN THE ID OF THE ADDED NOTE!
     await stub!.addNote(note.convertToAdd());
+  }
+
+  Future<Note> editNote(Note note) async {
+    // NoteMessage -> NoteMessage
+    note.convertToNote(
+      await stub!.editNote(
+        note.convertToMessage(),
+      ),
+    );
+    return note;
+  }
+
+  Future<void> removeNote(int id) async {
+    // SearchNoteMessage -> void
+    await stub!.removeNote(
+      SearchNoteRequest(id: Int64(id)),
+    );
+    return;
   }
 }
