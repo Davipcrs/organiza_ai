@@ -39,4 +39,8 @@ class ApiRequests {
     );
     return note;
   }
+
+  Future<void> addNote(Note note) async {
+    await stub!.addNote(note.convertToAdd());
+  }
 }

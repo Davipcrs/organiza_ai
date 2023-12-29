@@ -45,4 +45,14 @@ class Note {
     );
     return message;
   }
+
+  AddNoteMessage convertToAdd() {
+    AddNoteMessage message = AddNoteMessage(
+      title: title,
+      desc: desc,
+      created: created?.toIso8601String(),
+      deadLine: deadLine?.toIso8601String(),
+    );
+    return message;
+  }
 }
