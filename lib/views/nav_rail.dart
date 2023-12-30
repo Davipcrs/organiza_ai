@@ -23,7 +23,7 @@ class NavRail extends ConsumerWidget {
         NavigationRailDestination(
           icon: Icon(Icons.home),
           selectedIcon: Icon(Icons.home_filled),
-          label: Text('First'),
+          label: Text('Home - Notas'),
         ),
         NavigationRailDestination(
           icon: Icon(Icons.bookmark_border),

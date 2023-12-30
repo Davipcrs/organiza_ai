@@ -26,7 +26,6 @@ final selectedViewIndexProvider =
 class _SelectedViewIndexNotifier extends Notifier<int> {
   @override
   int build() {
-    // TODO: implement build
     return 0;
   }
 

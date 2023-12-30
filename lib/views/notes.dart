@@ -42,7 +42,7 @@ class _NotesViewState extends ConsumerState<NotesView> {
                   (context, index) {
                     return InkWell(
                       child: Container(
-                        color: Theme.of(context).colorScheme.primary,
+                        color: Theme.of(context).colorScheme.secondary,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -70,7 +70,7 @@ class _NotesViewState extends ConsumerState<NotesView> {
                                           .onPrimary),
                                 ),
                                 const VerticalDivider(
-                                  thickness: 5,
+                                  thickness: 1,
                                   width: 5,
                                 ),
                                 Text(

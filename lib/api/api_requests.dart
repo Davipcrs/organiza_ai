@@ -11,7 +11,6 @@ class ApiRequests {
     apiConnectionInstance.setConfig(ip: IP, port: PORT);
     apiConnectionInstance.connect();
     stub = NotesServicesClient(apiConnectionInstance.connection!);
-    print(stub!.getAllNotes(empty()));
   }
 
   Future<List<Note>> getNotes() async {

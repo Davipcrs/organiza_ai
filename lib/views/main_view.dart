@@ -14,7 +14,7 @@ class MainView extends ConsumerStatefulWidget {
 class _MainViewState extends ConsumerState<MainView> {
   @override
   Widget build(BuildContext context) {
-    bool isDrawer =
+    bool isMobile =
         ref.watch(isMobileProvider.notifier).updateScreenSize(context);
     return Scaffold(
       body: const Row(
@@ -24,8 +24,8 @@ class _MainViewState extends ConsumerState<MainView> {
           Expanded(child: NotesView()),
         ],
       ),
-      drawer: isDrawer ? const Drawer() : null,
-      appBar: AppBar(),
+      drawer: isMobile ? const Drawer() : null,
+      appBar: isMobile ? AppBar() : null,
     );
   }
 }
