@@ -42,10 +42,11 @@ class ApiRequests {
     return note;
   }
 
-  Future<void> addNote(Note note) async {
+  Future<Note> addNote(Note note) async {
     // AddNoteMessage -> SearchNoteMessage
-    // NEED TO RETURN THE ID OF THE ADDED NOTE!
-    await stub!.addNote(note.convertToAdd());
+    var response = await stub!.addNote(note.convertToAdd());
+    note.id = response.id.toInt();
+    return note;
   }
 
   Future<Note> editNote(Note note) async {
