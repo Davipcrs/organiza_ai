@@ -21,7 +21,7 @@ class _NotesViewState extends ConsumerState<NotesView> {
     setData();
     return noteList.when(
       error: (err, stack) => Center(child: Text('Error $err')),
-      loading: () => Center(
+      loading: () => const Center(
         child: CircularProgressIndicator(),
       ),
       data: (dataList) {
@@ -37,16 +37,50 @@ class _NotesViewState extends ConsumerState<NotesView> {
                       child: Container(
                         color: Theme.of(context).colorScheme.primary,
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Center(
-                              child: Text(
-                                "${dataList[index].title}",
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .onPrimary),
-                              ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    "${dataList[index].title}",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onPrimary),
+                                  ),
+                                ),
+                                Text(
+                                  "${dataList[index].created}",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onPrimary),
+                                ),
+                                const VerticalDivider(
+                                  thickness: 5,
+                                  width: 5,
+                                ),
+                                Text(
+                                  "${dataList[index].deadLine!}",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onPrimary),
+                                ),
+                              ],
+                            ),
+                            const Divider(thickness: 1, height: 1),
+                            Text(
+                              "${dataList[index].desc}",
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  color:
+                                      Theme.of(context).colorScheme.onPrimary),
                             ),
                           ],
                         ),
@@ -56,6 +90,7 @@ class _NotesViewState extends ConsumerState<NotesView> {
                 ),
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 500,
+                  mainAxisExtent: 150,
                   mainAxisSpacing: 10.0,
                   crossAxisSpacing: 10.0,
                   childAspectRatio: 4.0,
