@@ -1,4 +1,5 @@
 import 'package:grpc/grpc.dart';
+import 'package:grpc/grpc_or_grpcweb.dart';
 // Connection class
 // Used for creating a UNIQUE conection by device
 // ignore_for_file: non_constant_identifier_names
@@ -7,7 +8,7 @@ class ApiConnection {
   String? IP_ADDRESS;
   String? HOSTNAME;
   int? PORT;
-  ClientChannel? _connectionChannel;
+  GrpcOrGrpcWebClientChannel? _connectionChannel;
 
   // Singleton configuration!
   ApiConnection._constructor();
@@ -20,7 +21,7 @@ class ApiConnection {
     return _instance;
   }
 
-  ClientChannel? get connection => _connectionChannel;
+  GrpcOrGrpcWebClientChannel? get connection => _connectionChannel;
 
   void setConfig({String? ip, String? hostname, int? port}) {
     IP_ADDRESS = ip;
@@ -29,7 +30,7 @@ class ApiConnection {
   }
 
   void connect() {
-    _connectionChannel = ClientChannel(
+    _connectionChannel = GrpcOrGrpcWebClientChannel.grpc(
       IP_ADDRESS!,
       port: PORT!,
       options: const ChannelOptions(

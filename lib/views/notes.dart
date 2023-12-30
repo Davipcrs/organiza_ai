@@ -16,6 +16,13 @@ class _NotesViewState extends ConsumerState<NotesView> {
     noteList = ref.watch(apiNotesProvider);
   }
 
+  bool isNotNull(var aux) {
+    if (aux != null) {
+      return true;
+    }
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
     setData();
@@ -53,7 +60,9 @@ class _NotesViewState extends ConsumerState<NotesView> {
                                   ),
                                 ),
                                 Text(
-                                  "${dataList[index].created}",
+                                  isNotNull(dataList[index].created)
+                                      ? "${dataList[index].created}"
+                                      : "",
                                   style: TextStyle(
                                       fontSize: 15,
                                       color: Theme.of(context)
@@ -65,7 +74,9 @@ class _NotesViewState extends ConsumerState<NotesView> {
                                   width: 5,
                                 ),
                                 Text(
-                                  "${dataList[index].deadLine!}",
+                                  isNotNull(dataList[index].deadLine)
+                                      ? "${dataList[index].deadLine}"
+                                      : "",
                                   style: TextStyle(
                                       fontSize: 15,
                                       color: Theme.of(context)

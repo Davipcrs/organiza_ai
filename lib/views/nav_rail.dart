@@ -31,8 +31,8 @@ class NavRail extends ConsumerWidget {
           label: Text('Second'),
         ),
         NavigationRailDestination(
-          icon: Icon(Icons.star_border),
-          selectedIcon: Icon(Icons.star),
+          icon: Icon(Icons.calendar_month_outlined),
+          selectedIcon: Icon(Icons.calendar_month),
           label: Text('Third'),
         ),
       ],
