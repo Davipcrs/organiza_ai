@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:organiza_ai/controllers/api.dart';
 
-class NotesView extends ConsumerStatefulWidget {
-  const NotesView({super.key});
+class NotesWidget extends ConsumerStatefulWidget {
+  const NotesWidget({super.key});
 
   @override
-  ConsumerState<NotesView> createState() => _NotesViewState();
+  ConsumerState<NotesWidget> createState() => _NotesWidgetState();
 }
 
-class _NotesViewState extends ConsumerState<NotesView> {
+class _NotesWidgetState extends ConsumerState<NotesWidget> {
   late AsyncValue noteList;
 
   void setData() {
