@@ -11,6 +11,10 @@ class AddNoteWidget extends ConsumerStatefulWidget {
 class _AddNoteWidgetState extends ConsumerState<AddNoteWidget> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Form(
+      child: Row(
+        children: [],
+      ),
+    );
   }
 }
