@@ -18,24 +18,44 @@ class _AddNoteWidgetState extends ConsumerState<AddNoteWidget> {
       child: Column(
         children: [
           SizedBox(
-            child: TextField(
-              controller: titleController,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(), hintText: "Título"),
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: TextField(
+                controller: titleController,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(), hintText: "Título"),
+              ),
             ),
           ),
           Expanded(
             child: TextField(
+              textAlign: TextAlign.justify,
+              textAlignVertical: TextAlignVertical.top,
               controller: bodyController,
-              decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: "Descrição",
-                  focusColor: Theme.of(context).colorScheme.secondary,
-                  hoverColor: Theme.of(context).colorScheme.secondary),
-              style:
-                  TextStyle(color: Theme.of(context).colorScheme.onSecondary),
               maxLines: null,
+              expands: true,
               keyboardType: TextInputType.multiline,
+              decoration: const InputDecoration(
+                filled: true,
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(width: 0, style: BorderStyle.none),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10.0),
+                  ),
+                ),
+                hintText: "Descrição",
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Row(
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text(""),
+                ),
+              ],
             ),
           ),
         ],
