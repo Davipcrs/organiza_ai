@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:organiza_ai/controllers/responsiness.dart';
 
 class AddNoteWidget extends ConsumerStatefulWidget {
   const AddNoteWidget({super.key});
@@ -50,14 +51,33 @@ class _AddNoteWidgetState extends ConsumerState<AddNoteWidget> {
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 ElevatedButton(
+                  onPressed: () {
+                    ref
+                        .read(bodyMarkdownProvider.notifier)
+                        .update((state) => bodyController.text);
+                  },
+                  child: const Text("Visualizar"),
+                ),
+                ElevatedButton(
                   onPressed: () {},
-                  child: const Text(""),
+                  child: const Text("Cancelar"),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16.0),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: const Text("Adicionar"),
+                  ),
                 ),
               ],
             ),
           ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.05,
+          )
         ],
       ),
     );

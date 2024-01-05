@@ -1,6 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+final bodyMarkdownProvider = StateProvider((ref) => "");
+
+final isScreenBigProvider =
+    NotifierProvider<_IsScreenBigNotifier, bool>(_IsScreenBigNotifier.new);
+
+class _IsScreenBigNotifier extends Notifier<bool> {
+  @override
+  bool build() {
+    return true;
+  }
+
+  bool updateScreenSize(BuildContext context) {
+    if (MediaQuery.of(context).size.width > 800) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
+
 final isMobileProvider =
     NotifierProvider<_IsMobileNotifier, bool>(_IsMobileNotifier.new);
 
