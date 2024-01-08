@@ -3,10 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final bodyMarkdownProvider = StateProvider((ref) => "");
 
-final isScreenBigProvider =
-    NotifierProvider<_IsScreenBigNotifier, bool>(_IsScreenBigNotifier.new);
+final isScreenSmallProvider =
+    NotifierProvider<_IsScreenSmallNotifier, bool>(_IsScreenSmallNotifier.new);
 
-class _IsScreenBigNotifier extends Notifier<bool> {
+class _IsScreenSmallNotifier extends Notifier<bool> {
   @override
   bool build() {
     return true;

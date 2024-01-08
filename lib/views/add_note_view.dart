@@ -15,7 +15,7 @@ class AddNoteView extends ConsumerWidget {
     bool isMobile =
         ref.watch(isMobileProvider.notifier).updateScreenSize(context);
     bool isScreenBig =
-        ref.watch(isScreenBigProvider.notifier).updateScreenSize(context);
+        ref.watch(isScreenSmallProvider.notifier).updateScreenSize(context);
     return Scaffold(
       body: Row(
         children: [
