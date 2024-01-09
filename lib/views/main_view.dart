@@ -4,7 +4,7 @@ import 'package:organiza_ai/controllers/responsiness.dart';
 import 'package:organiza_ai/views/widgets/app_bar.dart';
 import 'package:organiza_ai/views/widgets/app_drawer.dart';
 import 'package:organiza_ai/views/widgets/nav_rail.dart';
-import 'package:organiza_ai/views/widgets/notes.dart';
+import 'package:organiza_ai/views/widgets/note_widget.dart';
 
 class MainView extends ConsumerStatefulWidget {
   const MainView({super.key});

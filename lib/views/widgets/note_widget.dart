@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:organiza_ai/controllers/api.dart';
+import 'package:organiza_ai/views/widgets/default_md_style.dart';
 
 class NotesWidget extends ConsumerStatefulWidget {
   const NotesWidget({super.key});
@@ -86,12 +88,11 @@ class _NotesWidgetState extends ConsumerState<NotesWidget> {
                               ],
                             ),
                             const Divider(thickness: 1, height: 1),
-                            Text(
-                              "${dataList[index].desc}",
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  color:
-                                      Theme.of(context).colorScheme.onPrimary),
+                            Expanded(
+                              child: Markdown(
+                                data: "${dataList[index].desc}",
+                                styleSheet: defaultMdStyle(context),
+                              ),
                             ),
                           ],
                         ),
@@ -99,9 +100,10 @@ class _NotesWidgetState extends ConsumerState<NotesWidget> {
                     );
                   },
                 ),
+                //Create a SliverGrid that gets the size of every element dynamically
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 500,
-                  mainAxisExtent: 150,
+                  mainAxisExtent: 250,
                   mainAxisSpacing: 10.0,
                   crossAxisSpacing: 10.0,
                   childAspectRatio: 4.0,
