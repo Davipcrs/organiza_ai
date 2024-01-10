@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:organiza_ai/controllers/api.dart';
+import 'package:organiza_ai/controllers/note_controllers.dart';
+import 'package:organiza_ai/model/note.dart';
 import 'package:organiza_ai/views/widgets/default_md_style.dart';
 
 class NotesWidget extends ConsumerStatefulWidget {
@@ -43,6 +46,11 @@ class _NotesWidgetState extends ConsumerState<NotesWidget> {
                   childCount: dataList!.length as int,
                   (context, index) {
                     return InkWell(
+                      onTap: () {
+                        ref.read(viewedNoteProvider.notifier).state =
+                            dataList[index] as Note;
+                        context.go("/note/view");
+                      },
                       child: Container(
                         color: Theme.of(context).colorScheme.secondary,
                         child: Column(
