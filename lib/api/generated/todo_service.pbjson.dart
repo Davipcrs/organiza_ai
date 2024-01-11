@@ -13,14 +13,14 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
-@$core.Deprecated('Use emptyDescriptor instead')
-const empty$json = {
-  '1': 'empty',
+@$core.Deprecated('Use emptyTodoDescriptor instead')
+const emptyTodo$json = {
+  '1': 'emptyTodo',
 };
 
-/// Descriptor for `empty`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List emptyDescriptor = $convert.base64Decode(
-    'CgVlbXB0eQ==');
+/// Descriptor for `emptyTodo`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List emptyTodoDescriptor = $convert.base64Decode(
+    'CgllbXB0eVRvZG8=');
 
 @$core.Deprecated('Use todoMessageDescriptor instead')
 const TodoMessage$json = {

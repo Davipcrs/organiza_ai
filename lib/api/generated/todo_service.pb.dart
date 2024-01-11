@@ -14,13 +14,13 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-class empty extends $pb.GeneratedMessage {
-  factory empty() => create();
-  empty._() : super();
-  factory empty.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory empty.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class emptyTodo extends $pb.GeneratedMessage {
+  factory emptyTodo() => create();
+  emptyTodo._() : super();
+  factory emptyTodo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory emptyTodo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'empty', package: const $pb.PackageName(_omitMessageNames ? '' : 'organiza_ai'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'emptyTodo', package: const $pb.PackageName(_omitMessageNames ? '' : 'organiza_ai'), createEmptyInstance: create)
     ..hasRequiredFields = false
   ;
 
@@ -28,22 +28,22 @@ class empty extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  empty clone() => empty()..mergeFromMessage(this);
+  emptyTodo clone() => emptyTodo()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  empty copyWith(void Function(empty) updates) => super.copyWith((message) => updates(message as empty)) as empty;
+  emptyTodo copyWith(void Function(emptyTodo) updates) => super.copyWith((message) => updates(message as emptyTodo)) as emptyTodo;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static empty create() => empty._();
-  empty createEmptyInstance() => create();
-  static $pb.PbList<empty> createRepeated() => $pb.PbList<empty>();
+  static emptyTodo create() => emptyTodo._();
+  emptyTodo createEmptyInstance() => create();
+  static $pb.PbList<emptyTodo> createRepeated() => $pb.PbList<emptyTodo>();
   @$core.pragma('dart2js:noInline')
-  static empty getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<empty>(create);
-  static empty? _defaultInstance;
+  static emptyTodo getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<emptyTodo>(create);
+  static emptyTodo? _defaultInstance;
 }
 
 class TodoMessage extends $pb.GeneratedMessage {
