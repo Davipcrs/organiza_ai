@@ -76,7 +76,10 @@ class _NotesWidgetState extends ConsumerState<NotesWidget> {
                                 ),
                                 Text(
                                   isNotNull(dataList[index].created)
-                                      ? "${dataList[index].created}"
+                                      ? dataList[index]
+                                          .created
+                                          .toString()
+                                          .substring(0, 19)
                                       : "",
                                   style: TextStyle(
                                       fontSize: 15,

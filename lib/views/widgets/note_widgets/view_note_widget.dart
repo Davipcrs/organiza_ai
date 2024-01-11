@@ -15,19 +15,33 @@ class _ViewNoteWidgetState extends ConsumerState<ViewNoteWidget> {
   @override
   Widget build(BuildContext context) {
     Note note = ref.watch(viewedNoteProvider);
-    return Column(
-      children: [
-        Row(
-          children: [
-            Text(note.title!),
-            const VerticalDivider(thickness: 1, width: 1),
-            Text(note.created.toString()),
-          ],
-        ),
-        Expanded(
-          child: Markdown(data: note.desc!),
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                note.title!,
+                style: const TextStyle(fontSize: 25),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0, right: 16),
+                child: Container(
+                    width: 10, color: Theme.of(context).colorScheme.onPrimary),
+              ),
+              Text(
+                note.created.toString().substring(0, 19),
+                style: const TextStyle(fontSize: 25),
+              ),
+            ],
+          ),
+          Expanded(
+            child: Markdown(data: note.desc!),
+          ),
+        ],
+      ),
     );
   }
 }
