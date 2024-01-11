@@ -51,6 +51,11 @@ class _NotesWidgetState extends ConsumerState<NotesWidget> {
                             dataList[index] as Note;
                         context.go("/note/view");
                       },
+                      onLongPress: () {
+                        ref.read(editedNoteProvider.notifier).state =
+                            dataList[index] as Note;
+                        context.go("/note/edit");
+                      },
                       child: Container(
                         color: Theme.of(context).colorScheme.secondary,
                         child: Column(
