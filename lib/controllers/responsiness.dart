@@ -39,17 +39,4 @@ class _IsMobileNotifier extends Notifier<bool> {
   }
 }
 
-final selectedViewIndexProvider =
-    NotifierProvider<_SelectedViewIndexNotifier, int>(
-        _SelectedViewIndexNotifier.new);
-
-class _SelectedViewIndexNotifier extends Notifier<int> {
-  @override
-  int build() {
-    return 0;
-  }
-
-  int setIndex(int index) {
-    return index;
-  }
-}
+final selectedViewIndexProvider = StateProvider((ref) => 0);

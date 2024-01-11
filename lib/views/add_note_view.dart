@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:organiza_ai/controllers/responsiness.dart';
-import 'package:organiza_ai/views/widgets/add_note_widget.dart';
+import 'package:organiza_ai/views/widgets/note_widgets/add_note_widget.dart';
 import 'package:organiza_ai/views/widgets/app_bar.dart';
 import 'package:organiza_ai/views/widgets/app_drawer.dart';
 import 'package:organiza_ai/views/widgets/markdown_preview.dart';

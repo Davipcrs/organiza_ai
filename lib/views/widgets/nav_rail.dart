@@ -13,7 +13,13 @@ class NavRail extends ConsumerWidget {
     }
     return NavigationRail(
       onDestinationSelected: (value) {
-        ref.read(selectedViewIndexProvider.notifier).setIndex(value);
+        ref.read(selectedViewIndexProvider.notifier).state = value;
+        if (value == 0) {
+          context.go("/");
+        }
+        if (value == 1) {
+          context.go("/note/add");
+        }
       },
       elevation: 4,
       leading: ElevatedButton(
