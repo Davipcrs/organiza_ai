@@ -3,6 +3,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:organiza_ai/api/api_requests.dart';
 import 'package:organiza_ai/model/note.dart';
+import 'package:organiza_ai/model/todo.dart';
 
 final apiServicesProvider =
     Provider((ref) => ApiRequests(IP: "192.168.0.2", PORT: 50051));
@@ -10,6 +11,22 @@ final apiServicesProvider =
 final apiNotesProvider = FutureProvider(
   (ref) async {
     return await ref.watch(apiServicesProvider).getNotes();
+  },
+);
+
+final apiTodoProvider = FutureProvider(
+  (ref) async {
+    List<Todo> a = List<Todo>.generate(
+      25,
+      (index) {
+        Todo todo = Todo();
+        todo.id = index;
+        todo.title = "Hello from $index";
+        return todo;
+      },
+    );
+    print(a[0].title);
+    return a;
   },
 );
 

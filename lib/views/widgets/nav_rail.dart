@@ -18,7 +18,7 @@ class NavRail extends ConsumerWidget {
           context.go("/");
         }
         if (value == 1) {
-          context.go("/note/add");
+          context.go("/todo");
         }
       },
       elevation: 4,
@@ -37,7 +37,7 @@ class NavRail extends ConsumerWidget {
         NavigationRailDestination(
           icon: Icon(Icons.bookmark_border),
           selectedIcon: Icon(Icons.book),
-          label: Text('Second'),
+          label: Text('Home - Todo'),
         ),
         NavigationRailDestination(
           icon: Icon(Icons.calendar_month_outlined),
