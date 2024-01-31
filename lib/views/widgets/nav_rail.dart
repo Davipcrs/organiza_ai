@@ -24,7 +24,11 @@ class NavRail extends ConsumerWidget {
       elevation: 4,
       leading: ElevatedButton(
         onPressed: () {
-          context.go("/note/add");
+          int index = ref.read(selectedViewIndexProvider);
+          if (index == 0) {
+            context.go("/note/add");
+          }
+          if (index == 1) {}
         },
         child: const Center(child: Icon(Icons.add)),
       ),

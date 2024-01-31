@@ -14,7 +14,7 @@ final apiNotesProvider = FutureProvider(
   },
 );
 
-final apiTodoProvider = FutureProvider(
+final apiTodosProvider = FutureProvider(
   (ref) async {
     List<Todo> a = List<Todo>.generate(
       25,
@@ -25,7 +25,6 @@ final apiTodoProvider = FutureProvider(
         return todo;
       },
     );
-    print(a[0].title);
     return a;
   },
 );

@@ -15,7 +15,7 @@ class _TodoWidgetState extends ConsumerState<TodoWidget> {
   late AsyncValue todoList;
 
   void setData() {
-    todoList = ref.watch(apiTodoProvider);
+    todoList = ref.watch(apiTodosProvider);
   }
 
   @override
@@ -27,17 +27,13 @@ class _TodoWidgetState extends ConsumerState<TodoWidget> {
         child: CircularProgressIndicator(),
       ),
       data: (dataList) {
-        return SizedBox(
-          width: MediaQuery.of(context).size.width - 60,
-          child: ListView.builder(
-            itemBuilder: (context, index) {
-              print(dataList[index]);
-              return ListTile(
-                title: todoElement(context, dataList[index] as Todo),
-              );
-            },
-            itemCount: dataList!.length as int,
-          ),
+        return ListView.builder(
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: todoElement(context, dataList[index] as Todo),
+            );
+          },
+          itemCount: dataList!.length as int,
         );
       },
     );

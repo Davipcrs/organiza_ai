@@ -6,16 +6,36 @@ todoElement(BuildContext context, Todo todo) {
   titleController.text = todo.title!;
   return Padding(
     padding: const EdgeInsets.all(8.0),
-    child: Row(
+    child: Column(
       children: [
-        TextField(
-          controller: titleController,
-          style: TextStyle(color: Theme.of(context).colorScheme.onBackground),
+        SizedBox(
+          height: MediaQuery.of(context).size.height / 25,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: TextField(
+                  controller: titleController,
+                  decoration: const InputDecoration(border: InputBorder.none),
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.onBackground),
+                ),
+              ),
+              IconButton(
+                onPressed: () {},
+                padding: EdgeInsets.zero,
+                icon: Icon(Icons.menu),
+              )
+            ],
+          ),
         ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.menu),
-        )
+        const Padding(
+          padding: EdgeInsets.only(top: 4.0),
+          child: Divider(
+            thickness: 1,
+            height: 3,
+          ),
+        ),
       ],
     ),
   );
