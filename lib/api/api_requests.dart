@@ -13,6 +13,10 @@ class ApiRequests {
     stub = NotesServicesClient(apiConnectionInstance.connection!);
   }
 
+  //
+  // Note
+  //
+
   Future<List<Note>> getNotes() async {
     // void -> Repeated (List of) NoteMessage
     List<Note> list = [];
@@ -66,4 +70,8 @@ class ApiRequests {
     );
     return;
   }
+
+  //
+  // Todo
+  //
 }
