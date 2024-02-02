@@ -6,7 +6,7 @@ class Todo {
 
   void create() {}
 
-  void convertToTodo() {}
+  void convertToTodo(TodoMessage message) {}
 
   TodoMessage convertToMessage() {
     return TodoMessage();

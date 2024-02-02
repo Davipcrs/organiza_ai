@@ -146,7 +146,7 @@ class _DeleteTodoNotifier extends AutoDisposeAsyncNotifier<void> {
   @override
   build() {}
 
-  Future<Todo> removeTodo(int id) async {
+  Future<void> removeTodo(int id) async {
     return await ref.watch(apiServicesProvider).removeTodo(id);
   }
 }

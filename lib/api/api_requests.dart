@@ -2,16 +2,19 @@
 import 'package:fixnum/fixnum.dart';
 import 'package:organiza_ai/api/api_connect.dart';
 import 'package:organiza_ai/api/generated/notes_service.pbgrpc.dart';
+import 'package:organiza_ai/api/generated/todo_service.pbgrpc.dart';
 import 'package:organiza_ai/model/note.dart';
 import 'package:organiza_ai/model/todo.dart';
 
 class ApiRequests {
   ApiConnection apiConnectionInstance = ApiConnection();
-  NotesServicesClient? stub;
+  NotesServicesClient? noteStub;
+  TodoServicesClient? todoStub;
   ApiRequests({required String IP, required int PORT}) {
     apiConnectionInstance.setConfig(ip: IP, port: PORT);
     apiConnectionInstance.connect();
-    stub = NotesServicesClient(apiConnectionInstance.connection!);
+    noteStub = NotesServicesClient(apiConnectionInstance.connection!);
+    todoStub = TodoServicesClient(apiConnectionInstance.connection!);
   }
 
 // =========================================================================
@@ -21,7 +24,7 @@ class ApiRequests {
   Future<List<Note>> getNotes() async {
     // void -> Repeated (List of) NoteMessage
     List<Note> list = [];
-    var allNotes = stub!.getAllNotes(empty());
+    var allNotes = noteStub!.getAllNotes(empty());
     try {
       var awaitedNotes = await allNotes;
       for (var message in awaitedNotes.note) {
@@ -40,7 +43,7 @@ class ApiRequests {
     // SearchNoteMessage -> NoteMessage
     Note note = Note();
     note.convertToNote(
-      await stub!.getNote(
+      await noteStub!.getNote(
         SearchNoteRequest(id: Int64(id)),
       ),
     );
@@ -49,7 +52,7 @@ class ApiRequests {
 
   Future<Note> addNote(Note note) async {
     // AddNoteMessage -> SearchNoteMessage
-    var response = await stub!.addNote(note.convertToAdd());
+    var response = await noteStub!.addNote(note.convertToAdd());
     note.id = response.id.toInt();
     return note;
   }
@@ -57,7 +60,7 @@ class ApiRequests {
   Future<Note> editNote(Note note) async {
     // NoteMessage -> NoteMessage
     note.convertToNote(
-      await stub!.editNote(
+      await noteStub!.editNote(
         note.convertToMessage(),
       ),
     );
@@ -66,7 +69,7 @@ class ApiRequests {
 
   Future<void> removeNote(int id) async {
     // SearchNoteMessage -> void
-    await stub!.removeNote(
+    await noteStub!.removeNote(
       SearchNoteRequest(id: Int64(id)),
     );
     return;
@@ -76,13 +79,52 @@ class ApiRequests {
 // Todo
 // =========================================================================
 
-  getTodos() {}
+  Future<List<Todo>> getTodos() async {
+    List<Todo> list = [];
+    var allTodos = todoStub!.getAllTodo(emptyTodo());
+    try {
+      var awaitedTodos = await allTodos;
+      for (var message in awaitedTodos.todo) {
+        Todo todo = Todo();
+        todo.convertToTodo(message);
+        list.add(todo);
+      }
+    } catch (e) {
+      print("ERROR: $e");
+    }
+    return list;
+  }
 
-  addTodo(Todo todo) {}
+  Future<Todo> addTodo(Todo todo) async {
+    var response = await todoStub!.addTodo(todo.convertToAdd());
+    todo.id = response.id.toInt();
 
-  updateTodo(Todo todo) {}
+    return todo;
+  }
 
-  getOneTodo(int id) {}
+  Future<Todo> updateTodo(Todo todo) async {
+    todo.convertToTodo(
+      await todoStub!.editTodo(
+        todo.convertToMessage(),
+      ),
+    );
 
-  removeTodo(int id) {}
+    return todo;
+  }
+
+  Future<Todo> getOneTodo(int id) async {
+    Todo todo = Todo();
+    todo.convertToTodo(
+      await todoStub!.getTodo(
+        SearchTodoMessage(id: Int64(id)),
+      ),
+    );
+
+    return todo;
+  }
+
+  Future<void> removeTodo(int id) async {
+    await todoStub!.deleteTodo(SearchTodoMessage(id: Int64(id)));
+    return;
+  }
 }
