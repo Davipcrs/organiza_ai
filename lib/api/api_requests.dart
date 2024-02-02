@@ -3,6 +3,7 @@ import 'package:fixnum/fixnum.dart';
 import 'package:organiza_ai/api/api_connect.dart';
 import 'package:organiza_ai/api/generated/notes_service.pbgrpc.dart';
 import 'package:organiza_ai/model/note.dart';
+import 'package:organiza_ai/model/todo.dart';
 
 class ApiRequests {
   ApiConnection apiConnectionInstance = ApiConnection();
@@ -13,9 +14,9 @@ class ApiRequests {
     stub = NotesServicesClient(apiConnectionInstance.connection!);
   }
 
-  //
-  // Note
-  //
+// =========================================================================
+// Note
+// =========================================================================
 
   Future<List<Note>> getNotes() async {
     // void -> Repeated (List of) NoteMessage
@@ -71,7 +72,17 @@ class ApiRequests {
     return;
   }
 
-  //
-  // Todo
-  //
+// =========================================================================
+// Todo
+// =========================================================================
+
+  getTodos() {}
+
+  addTodo(Todo todo) {}
+
+  updateTodo(Todo todo) {}
+
+  getOneTodo(int id) {}
+
+  removeTodo(int id) {}
 }
