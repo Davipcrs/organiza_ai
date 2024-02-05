@@ -124,7 +124,7 @@ class ApiRequests {
   }
 
   Future<void> removeTodo(int id) async {
-    await todoStub!.deleteTodo(SearchTodoMessage(id: Int64(id)));
+    await todoStub!.removeTodo(SearchTodoMessage(id: Int64(id)));
     return;
   }
 }

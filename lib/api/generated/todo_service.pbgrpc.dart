@@ -37,8 +37,8 @@ class TodoServicesClient extends $grpc.Client {
       '/organiza_ai.TodoServices/editTodo',
       ($0.TodoMessage value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.TodoMessage.fromBuffer(value));
-  static final _$deleteTodo = $grpc.ClientMethod<$0.SearchTodoMessage, $0.emptyTodo>(
-      '/organiza_ai.TodoServices/deleteTodo',
+  static final _$removeTodo = $grpc.ClientMethod<$0.SearchTodoMessage, $0.emptyTodo>(
+      '/organiza_ai.TodoServices/removeTodo',
       ($0.SearchTodoMessage value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.emptyTodo.fromBuffer(value));
 
@@ -64,8 +64,8 @@ class TodoServicesClient extends $grpc.Client {
     return $createUnaryCall(_$editTodo, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.emptyTodo> deleteTodo($0.SearchTodoMessage request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$deleteTodo, request, options: options);
+  $grpc.ResponseFuture<$0.emptyTodo> removeTodo($0.SearchTodoMessage request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$removeTodo, request, options: options);
   }
 }
 
@@ -103,8 +103,8 @@ abstract class TodoServicesServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) => $0.TodoMessage.fromBuffer(value),
         ($0.TodoMessage value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.SearchTodoMessage, $0.emptyTodo>(
-        'deleteTodo',
-        deleteTodo_Pre,
+        'removeTodo',
+        removeTodo_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.SearchTodoMessage.fromBuffer(value),
@@ -127,13 +127,13 @@ abstract class TodoServicesServiceBase extends $grpc.Service {
     return editTodo(call, await request);
   }
 
-  $async.Future<$0.emptyTodo> deleteTodo_Pre($grpc.ServiceCall call, $async.Future<$0.SearchTodoMessage> request) async {
-    return deleteTodo(call, await request);
+  $async.Future<$0.emptyTodo> removeTodo_Pre($grpc.ServiceCall call, $async.Future<$0.SearchTodoMessage> request) async {
+    return removeTodo(call, await request);
   }
 
   $async.Future<$0.TodoMessage> getTodo($grpc.ServiceCall call, $0.SearchTodoMessage request);
   $async.Future<$0.TodoResponse> getAllTodo($grpc.ServiceCall call, $0.emptyTodo request);
   $async.Future<$0.SearchTodoMessage> addTodo($grpc.ServiceCall call, $0.AddTodoMessage request);
   $async.Future<$0.TodoMessage> editTodo($grpc.ServiceCall call, $0.TodoMessage request);
-  $async.Future<$0.emptyTodo> deleteTodo($grpc.ServiceCall call, $0.SearchTodoMessage request);
+  $async.Future<$0.emptyTodo> removeTodo($grpc.ServiceCall call, $0.SearchTodoMessage request);
 }

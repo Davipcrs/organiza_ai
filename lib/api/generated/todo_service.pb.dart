@@ -50,7 +50,6 @@ class TodoMessage extends $pb.GeneratedMessage {
   factory TodoMessage({
     $fixnum.Int64? id,
     $core.String? title,
-    $core.String? deadLine,
   }) {
     final $result = create();
     if (id != null) {
@@ -58,9 +57,6 @@ class TodoMessage extends $pb.GeneratedMessage {
     }
     if (title != null) {
       $result.title = title;
-    }
-    if (deadLine != null) {
-      $result.deadLine = deadLine;
     }
     return $result;
   }
@@ -71,7 +67,6 @@ class TodoMessage extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TodoMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'organiza_ai'), createEmptyInstance: create)
     ..aInt64(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'title')
-    ..aOS(3, _omitFieldNames ? '' : 'deadLine', protoName: 'deadLine')
     ..hasRequiredFields = false
   ;
 
@@ -113,15 +108,6 @@ class TodoMessage extends $pb.GeneratedMessage {
   $core.bool hasTitle() => $_has(1);
   @$pb.TagNumber(2)
   void clearTitle() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.String get deadLine => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set deadLine($core.String v) { $_setString(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasDeadLine() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearDeadLine() => clearField(3);
 }
 
 class TodoResponse extends $pb.GeneratedMessage {
@@ -171,14 +157,10 @@ class TodoResponse extends $pb.GeneratedMessage {
 class AddTodoMessage extends $pb.GeneratedMessage {
   factory AddTodoMessage({
     $core.String? title,
-    $core.String? deadLine,
   }) {
     final $result = create();
     if (title != null) {
       $result.title = title;
-    }
-    if (deadLine != null) {
-      $result.deadLine = deadLine;
     }
     return $result;
   }
@@ -188,7 +170,6 @@ class AddTodoMessage extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'AddTodoMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'organiza_ai'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'title')
-    ..aOS(2, _omitFieldNames ? '' : 'deadLine', protoName: 'deadLine')
     ..hasRequiredFields = false
   ;
 
@@ -221,15 +202,6 @@ class AddTodoMessage extends $pb.GeneratedMessage {
   $core.bool hasTitle() => $_has(0);
   @$pb.TagNumber(1)
   void clearTitle() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get deadLine => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set deadLine($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasDeadLine() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearDeadLine() => clearField(2);
 }
 
 class SearchTodoMessage extends $pb.GeneratedMessage {

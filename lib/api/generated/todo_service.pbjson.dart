@@ -28,14 +28,12 @@ const TodoMessage$json = {
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 3, '10': 'id'},
     {'1': 'title', '3': 2, '4': 1, '5': 9, '10': 'title'},
-    {'1': 'deadLine', '3': 3, '4': 1, '5': 9, '10': 'deadLine'},
   ],
 };
 
 /// Descriptor for `TodoMessage`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List todoMessageDescriptor = $convert.base64Decode(
-    'CgtUb2RvTWVzc2FnZRIOCgJpZBgBIAEoA1ICaWQSFAoFdGl0bGUYAiABKAlSBXRpdGxlEhoKCG'
-    'RlYWRMaW5lGAMgASgJUghkZWFkTGluZQ==');
+    'CgtUb2RvTWVzc2FnZRIOCgJpZBgBIAEoA1ICaWQSFAoFdGl0bGUYAiABKAlSBXRpdGxl');
 
 @$core.Deprecated('Use todoResponseDescriptor instead')
 const TodoResponse$json = {
@@ -55,14 +53,12 @@ const AddTodoMessage$json = {
   '1': 'AddTodoMessage',
   '2': [
     {'1': 'title', '3': 1, '4': 1, '5': 9, '10': 'title'},
-    {'1': 'deadLine', '3': 2, '4': 1, '5': 9, '10': 'deadLine'},
   ],
 };
 
 /// Descriptor for `AddTodoMessage`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List addTodoMessageDescriptor = $convert.base64Decode(
-    'Cg5BZGRUb2RvTWVzc2FnZRIUCgV0aXRsZRgBIAEoCVIFdGl0bGUSGgoIZGVhZExpbmUYAiABKA'
-    'lSCGRlYWRMaW5l');
+    'Cg5BZGRUb2RvTWVzc2FnZRIUCgV0aXRsZRgBIAEoCVIFdGl0bGU=');
 
 @$core.Deprecated('Use searchTodoMessageDescriptor instead')
 const SearchTodoMessage$json = {
