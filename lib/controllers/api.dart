@@ -80,6 +80,7 @@ class _DeleteNoteNotifier extends AutoDisposeAsyncNotifier<void> {
 
 final apiTodosProvider = FutureProvider(
   (ref) async {
+    /*
     List<Todo> a = List<Todo>.generate(
       25,
       (index) {
@@ -90,7 +91,7 @@ final apiTodosProvider = FutureProvider(
       },
     );
     return a;
-
+    */
     return await ref.watch(apiServicesProvider).getTodos();
   },
 );

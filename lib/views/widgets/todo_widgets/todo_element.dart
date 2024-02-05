@@ -4,6 +4,7 @@ import 'package:organiza_ai/model/todo.dart';
 todoElement(BuildContext context, Todo todo) {
   TextEditingController titleController = TextEditingController();
   titleController.text = todo.title!;
+
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Column(

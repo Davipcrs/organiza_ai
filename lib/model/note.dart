@@ -22,12 +22,11 @@ class Note {
   }
 
   void convertToNote(NoteMessage noteMessage) {
-    Note auxiliar = Note();
     // convert string to dateTime;
     DateTime? auxiliarCreated = DateTime.tryParse(noteMessage.created);
     DateTime? auxiliarDeadLine = DateTime.tryParse(noteMessage.deadLine);
 
-    auxiliar.create(
+    create(
         id = noteMessage.id.toInt(),
         title = noteMessage.title,
         desc = noteMessage.desc,
