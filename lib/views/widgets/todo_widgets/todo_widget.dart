@@ -30,7 +30,7 @@ class _TodoWidgetState extends ConsumerState<TodoWidget> {
         return ListView.builder(
           itemBuilder: (context, index) {
             return ListTile(
-              title: todoElement(context, dataList[index] as Todo),
+              title: todoElement(context, dataList[index] as Todo, ref),
             );
           },
           itemCount: dataList!.length as int,
