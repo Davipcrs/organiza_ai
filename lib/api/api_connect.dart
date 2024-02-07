@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:grpc/grpc.dart';
 import 'package:grpc/grpc_or_grpcweb.dart';
+import 'package:grpc/grpc_web.dart';
 // Connection class
 // Used for creating a UNIQUE conection by device
 // ignore_for_file: non_constant_identifier_names
@@ -9,6 +11,7 @@ class ApiConnection {
   String? HOSTNAME;
   int? PORT;
   GrpcOrGrpcWebClientChannel? _connectionChannel;
+  GrpcWebClientChannel? _webConnectionChannel;
 
   // Singleton configuration!
   ApiConnection._constructor();
@@ -22,6 +25,7 @@ class ApiConnection {
   }
 
   GrpcOrGrpcWebClientChannel? get connection => _connectionChannel;
+  GrpcWebClientChannel? get webConnection => _webConnectionChannel;
 
   void setConfig({String? ip, String? hostname, int? port}) {
     IP_ADDRESS = ip;
@@ -30,6 +34,11 @@ class ApiConnection {
   }
 
   void connect() {
+    if (kIsWeb) {
+      _webConnectionChannel =
+          GrpcWebClientChannel.xhr(Uri.parse("http://192.168.0.51:50051"));
+      return;
+    }
     _connectionChannel = GrpcOrGrpcWebClientChannel.grpc(
       IP_ADDRESS!,
       port: PORT!,

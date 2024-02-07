@@ -1,5 +1,6 @@
 // all api requests class
 import 'package:fixnum/fixnum.dart';
+import 'package:flutter/foundation.dart';
 import 'package:organiza_ai/api/api_connect.dart';
 import 'package:organiza_ai/api/generated/notes_service.pbgrpc.dart';
 import 'package:organiza_ai/api/generated/todo_service.pbgrpc.dart';
@@ -13,8 +14,13 @@ class ApiRequests {
   ApiRequests({required String IP, required int PORT}) {
     apiConnectionInstance.setConfig(ip: IP, port: PORT);
     apiConnectionInstance.connect();
-    noteStub = NotesServicesClient(apiConnectionInstance.connection!);
-    todoStub = TodoServicesClient(apiConnectionInstance.connection!);
+    if (kIsWeb) {
+      noteStub = NotesServicesClient(apiConnectionInstance.webConnection!);
+      todoStub = TodoServicesClient(apiConnectionInstance.webConnection!);
+    } else {
+      noteStub = NotesServicesClient(apiConnectionInstance.connection!);
+      todoStub = TodoServicesClient(apiConnectionInstance.connection!);
+    }
   }
 
 // =========================================================================

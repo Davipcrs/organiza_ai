@@ -6,7 +6,7 @@ import 'package:organiza_ai/model/note.dart';
 import 'package:organiza_ai/model/todo.dart';
 
 final apiServicesProvider =
-    Provider((ref) => ApiRequests(IP: "192.168.0.2", PORT: 50051));
+    Provider((ref) => ApiRequests(IP: "192.168.0.51", PORT: 50051));
 
 // =========================================================================
 // NOTES
