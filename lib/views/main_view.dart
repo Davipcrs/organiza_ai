@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:organiza_ai/controllers/responsiness.dart';
@@ -5,6 +6,7 @@ import 'package:organiza_ai/views/widgets/app_bar.dart';
 import 'package:organiza_ai/views/widgets/app_drawer.dart';
 import 'package:organiza_ai/views/widgets/nav_rail.dart';
 import 'package:organiza_ai/views/widgets/note_widgets/note_widget.dart';
+import 'package:organiza_ai/views/widgets/select_host_dialog.dart';
 
 class MainView extends ConsumerStatefulWidget {
   const MainView({super.key});
@@ -16,6 +18,9 @@ class MainView extends ConsumerStatefulWidget {
 class _MainViewState extends ConsumerState<MainView> {
   @override
   Widget build(BuildContext context) {
+    if (!kIsWeb) {
+      Future.delayed(Duration.zero, () => showSelectHostDialog(ref, context));
+    }
     bool isMobile =
         ref.watch(isMobileProvider.notifier).updateScreenSize(context);
     return Scaffold(

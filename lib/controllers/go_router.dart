@@ -4,7 +4,6 @@ import 'package:organiza_ai/views/add_note_view.dart';
 import 'package:organiza_ai/views/edit_note_view.dart';
 import 'package:organiza_ai/views/main_view.dart';
 import 'package:organiza_ai/views/note_details_view.dart';
-import 'package:organiza_ai/views/select_server_host.dart';
 import 'package:organiza_ai/views/todo_view.dart';
 
 final router = GoRouter(
@@ -37,12 +36,6 @@ final router = GoRouter(
       path: "/todo",
       builder: (BuildContext context, GoRouterState state) {
         return const TodoView();
-      },
-    ),
-    GoRoute(
-      path: "/select-server",
-      builder: (BuildContext context, GoRouterState state) {
-        return const SelectHostView();
       },
     ),
   ],
