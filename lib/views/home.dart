@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:organiza_ai/controllers/api.dart';
-import 'package:organiza_ai/views/widgets/select_host_dialog.dart';
 
 class HomeView extends ConsumerStatefulWidget {
   const HomeView({super.key});
@@ -15,6 +14,7 @@ class HomeView extends ConsumerStatefulWidget {
 
 class _HomeViewState extends ConsumerState<HomeView> {
   TextEditingController hostController = TextEditingController();
+
   readServerIp(WidgetRef ref) async {
     const storage = FlutterSecureStorage();
     var value = await storage.read(key: "server_ip");
@@ -36,6 +36,9 @@ class _HomeViewState extends ConsumerState<HomeView> {
       Future.delayed(Duration.zero, () => context.go("/note"));
     } else {
       readServerIp(ref);
+      if (ref.watch(boolNullHost) == false) {
+        Future.delayed(Duration.zero, () => context.go("/note"));
+      }
     }
 
     return Scaffold(

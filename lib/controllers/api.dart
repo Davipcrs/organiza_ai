@@ -19,7 +19,7 @@ final apiHost = StateProvider(
   },
 );
 
-final boolNullHost = StateProvider((ref) => false);
+final boolNullHost = StateProvider((ref) => true);
 
 // =========================================================================
 // NOTES
