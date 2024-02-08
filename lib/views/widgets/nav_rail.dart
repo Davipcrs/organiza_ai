@@ -17,7 +17,7 @@ class NavRail extends ConsumerWidget {
       onDestinationSelected: (value) {
         ref.read(selectedViewIndexProvider.notifier).state = value;
         if (value == 0) {
-          context.go("/");
+          context.go("/note");
         }
         if (value == 1) {
           context.go("/todo");

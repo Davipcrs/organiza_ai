@@ -89,7 +89,7 @@ class _AddNoteWidgetState extends ConsumerState<AddNoteWidget> {
                       note.create(0, titleController.text, bodyController.text);
                       ref.read(apiAddNoteProvider.notifier).addNote(note);
                       ref.invalidate(apiNotesProvider);
-                      context.go("/");
+                      context.go("/note");
                     },
                     child: const Text("Adicionar"),
                   ),

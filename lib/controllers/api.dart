@@ -1,5 +1,6 @@
 // api controller.
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:organiza_ai/api/api_requests.dart';
 import 'package:organiza_ai/model/note.dart';
@@ -8,7 +9,17 @@ import 'package:organiza_ai/model/todo.dart';
 final apiServicesProvider =
     Provider((ref) => ApiRequests(IP: ref.watch(apiHost), PORT: 50051));
 
-final apiHost = StateProvider((ref) => "192.168.0.51");
+final apiHost = StateProvider(
+  (ref) {
+    if (kIsWeb) {
+      return "192.168.0.51";
+    } else {
+      return "";
+    }
+  },
+);
+
+final boolNullHost = StateProvider((ref) => false);
 
 // =========================================================================
 // NOTES

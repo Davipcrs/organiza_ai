@@ -93,7 +93,7 @@ class _EditNoteWidgetState extends ConsumerState<EditNoteWidget> {
                       note.desc = bodyController.text;
                       ref.read(apiUpdateNoteProvider.notifier).editNote(note);
                       ref.invalidate(apiNotesProvider);
-                      context.go("/");
+                      context.go("/note");
                     },
                     child: const Text("Editar"),
                   ),
