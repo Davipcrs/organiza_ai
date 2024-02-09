@@ -12,7 +12,7 @@ final apiServicesProvider =
 final apiHost = StateProvider(
   (ref) {
     if (kIsWeb) {
-      return "server.docker.internal";
+      return "organiza_ai.com";
     } else {
       return "";
     }
