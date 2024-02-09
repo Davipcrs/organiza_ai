@@ -12,7 +12,7 @@ final apiServicesProvider =
 final apiHost = StateProvider(
   (ref) {
     if (kIsWeb) {
-      return "127.0.0.1";
+      return "192.168.0.51";
     } else {
       return "";
     }
