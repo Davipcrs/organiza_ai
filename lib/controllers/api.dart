@@ -6,8 +6,14 @@ import 'package:organiza_ai/api/api_requests.dart';
 import 'package:organiza_ai/model/note.dart';
 import 'package:organiza_ai/model/todo.dart';
 
-final apiServicesProvider =
-    Provider((ref) => ApiRequests(IP: ref.watch(apiHost), PORT: 50051));
+final apiServicesProvider = Provider(
+  (ref) {
+    if (kIsWeb) {
+      return ApiRequests(IP: ref.watch(apiHost), PORT: 50051);
+    }
+    return ApiRequests(IP: ref.watch(apiHost), PORT: 50052);
+  },
+);
 
 final apiHost = StateProvider(
   (ref) {
