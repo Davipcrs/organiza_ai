@@ -12,7 +12,7 @@ final apiServicesProvider =
 final apiHost = StateProvider(
   (ref) {
     if (kIsWeb) {
-      return "host.docker.internal";
+      return "127.0.0.1";
     } else {
       return "";
     }
