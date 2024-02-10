@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:organiza_ai/controllers/api.dart';
 import 'package:organiza_ai/controllers/responsiness.dart';
@@ -14,13 +16,22 @@ class NavRail extends ConsumerWidget {
       return const SizedBox.shrink();
     }
     return NavigationRail(
-      onDestinationSelected: (value) {
+      onDestinationSelected: (value) async {
         ref.read(selectedViewIndexProvider.notifier).state = value;
         if (value == 0) {
           context.go("/note");
         }
         if (value == 1) {
           context.go("/todo");
+        }
+        if (value == 3) {
+          if (kIsWeb) {
+            return;
+          }
+          const storage = FlutterSecureStorage();
+          ref.read(boolNullHost.notifier).state = true;
+          await storage.delete(key: "server_ip");
+          context.go("/");
         }
       },
       elevation: 4,
@@ -54,6 +65,11 @@ class NavRail extends ConsumerWidget {
           icon: Icon(Icons.calendar_month_outlined),
           selectedIcon: Icon(Icons.calendar_month),
           label: Text('Third'),
+        ),
+        NavigationRailDestination(
+          icon: Icon(Icons.settings_outlined),
+          selectedIcon: Icon(Icons.settings),
+          label: Text('Four'),
         ),
       ],
       selectedIndex: ref.watch(selectedViewIndexProvider),

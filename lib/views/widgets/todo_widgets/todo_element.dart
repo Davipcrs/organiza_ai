@@ -19,21 +19,25 @@ todoElement(BuildContext context, Todo todo, WidgetRef ref) {
               Expanded(
                 child: TextField(
                   controller: titleController,
-                  onEditingComplete: () {
+                  onEditingComplete: () async {
                     todo.title = titleController.text;
                     ref.watch(apiUpdateTodoProvider.notifier).updateTodo(todo);
+                    await Future.delayed(const Duration(milliseconds: 300));
                     ref.invalidate(apiTodosProvider);
                   },
-                  onTapOutside: (event) {
-                    todo.title = titleController.text;
-                    ref.watch(apiUpdateTodoProvider.notifier).updateTodo(todo);
-                    ref.invalidate(apiTodosProvider);
-                  },
-                  onSubmitted: (value) {
-                    todo.title = titleController.text;
-                    ref.watch(apiUpdateTodoProvider.notifier).updateTodo(todo);
-                    ref.invalidate(apiTodosProvider);
-                  },
+                  // TODO:
+                  // LEMBRAR de testar a questão do BackSpace nos To do, não tava dando certo.
+
+                  //onTapOutside: (event) {
+                  //  todo.title = titleController.text;
+                  //  ref.watch(apiUpdateTodoProvider.notifier).updateTodo(todo);
+                  //  ref.invalidate(apiTodosProvider);
+                  //},
+                  //onSubmitted: (value) {
+                  //  todo.title = titleController.text;
+                  //  ref.watch(apiUpdateTodoProvider.notifier).updateTodo(todo);
+                  //  ref.invalidate(apiTodosProvider);
+                  //},
                   decoration: const InputDecoration(border: InputBorder.none),
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.onBackground),
