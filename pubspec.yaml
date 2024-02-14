@@ -9,13 +9,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_riverpod: ^2.4.9
-  go_router: ^12.1.3
-  fixnum: ^1.1.0
-  protobuf: ^3.1.0
-  grpc: ^3.2.4
-  flutter_markdown: ^0.6.18+3
-  flutter_secure_storage: ^9.0.0
+  flutter_riverpod: ^2.4.9 # MIT 
+  go_router: ^12.1.3 # BSD-3-Clause
+  fixnum: ^1.1.0 # BSD-3-Clause
+  protobuf: ^3.1.0 # BSD-3-Clause
+  grpc: ^3.2.4 # Apache-2.0 
+  flutter_markdown: ^0.6.18+3 # BSD-3-Clause
+  flutter_secure_storage: ^9.0.0 # BSD-3-Clause
+  calendar_view: ^1.0.4 # MIT
 
 dev_dependencies:
   flutter_test:

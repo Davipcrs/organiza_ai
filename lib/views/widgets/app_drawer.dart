@@ -34,6 +34,7 @@ customAppDrawer(BuildContext context, WidgetRef ref) {
             const storage = FlutterSecureStorage();
             ref.read(boolNullHost.notifier).state = true;
             await storage.delete(key: "server_ip");
+            // ignore: use_build_context_synchronously
             context.go("/");
           },
           icon: const Icon(Icons.settings),
