@@ -1,3 +1,4 @@
+import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:organiza_ai/controllers/api.dart';
 import 'package:organiza_ai/controllers/responsiness.dart';
+import 'package:organiza_ai/model/appointment.dart';
 import 'package:organiza_ai/model/todo.dart';
 
 class NavRail extends ConsumerWidget {
@@ -23,6 +25,23 @@ class NavRail extends ConsumerWidget {
         }
         if (value == 1) {
           context.go("/todo");
+        }
+        if (value == 2) {
+          Appointment appointment = Appointment();
+          appointment.create(
+            0,
+            "Teste",
+            DateTime.now(),
+            "Descrição",
+            DateTime.now().add(
+              const Duration(minutes: 30),
+            ),
+            false,
+            0xff5f2280,
+          );
+          var event = appointment.convertToCalendarEventData();
+          CalendarControllerProvider.of(context).controller.add(event);
+          context.go("/calendar");
         }
         if (value == 3) {
           if (kIsWeb) {
@@ -48,6 +67,7 @@ class NavRail extends ConsumerWidget {
             ref.read(apiAddTodoProvider.notifier).addTodo(todo);
             ref.invalidate(apiTodosProvider);
           }
+          if (index == 2) {}
         },
         child: const Center(child: Icon(Icons.add)),
       ),

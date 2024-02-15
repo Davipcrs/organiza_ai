@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:organiza_ai/views/add_note_view.dart';
+import 'package:organiza_ai/views/calendar_view.dart';
 import 'package:organiza_ai/views/edit_note_view.dart';
 import 'package:organiza_ai/views/home.dart';
 import 'package:organiza_ai/views/main_view.dart';
@@ -45,5 +46,11 @@ final router = GoRouter(
         return const TodoView();
       },
     ),
+    GoRoute(
+      path: "/calendar",
+      builder: (BuildContext context, GoRouterState state) {
+        return const CalendarView();
+      },
+    )
   ],
 );
