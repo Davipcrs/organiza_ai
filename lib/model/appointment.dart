@@ -30,6 +30,7 @@ class Appointment {
     return CalendarEventData(
       title: title!,
       date: start!,
+      startTime: start!,
       endDate: end!,
       description: desc!,
       color: Color(color!),
