@@ -10,7 +10,8 @@ class Appointment {
   late bool? canceled;
   late int? color;
 
-  void create(id, title, start, [desc, end, canceled, color]) {
+  void create(int id, String title, DateTime start, DateTime end,
+      [String? desc, bool? canceled, int? color]) {
     this.id = id;
     this.title = title;
     this.desc = desc;
@@ -31,6 +32,7 @@ class Appointment {
       title: title!,
       date: start!,
       startTime: start!,
+      endTime: end!,
       endDate: end!,
       description: desc!,
       color: Color(color!),

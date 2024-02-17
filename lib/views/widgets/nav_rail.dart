@@ -30,17 +30,16 @@ class NavRail extends ConsumerWidget {
           Appointment appointment = Appointment();
           appointment.create(
             0,
-            "Teste",
+            "title",
             DateTime.now(),
-            "Descrição",
             DateTime.now().add(
-              const Duration(minutes: 30),
+              const Duration(minutes: 120),
             ),
+            "Descrição",
             false,
             0xff5f2280,
           );
           var event = appointment.convertToCalendarEventData();
-          CalendarControllerProvider.of(context).controller.add(event);
           CalendarControllerProvider.of(context).controller.add(event);
           context.go("/calendar");
         }

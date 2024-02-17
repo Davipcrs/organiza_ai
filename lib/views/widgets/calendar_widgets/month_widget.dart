@@ -1,6 +1,6 @@
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
-import 'package:organiza_ai/views/widgets/calendar_widgets/week_widget.dart';
+import 'package:organiza_ai/views/widgets/calendar_widgets/day_widget.dart';
 
 class MonthWidget extends StatelessWidget {
   MonthWidget({super.key});
@@ -9,7 +9,7 @@ class MonthWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //return WeekWidget();
+    //return DayWidget();
     return MonthView(
       useAvailableVerticalSpace: true,
       key: state,
