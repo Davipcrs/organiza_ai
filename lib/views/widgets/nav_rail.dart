@@ -41,6 +41,7 @@ class NavRail extends ConsumerWidget {
           );
           var event = appointment.convertToCalendarEventData();
           CalendarControllerProvider.of(context).controller.add(event);
+          CalendarControllerProvider.of(context).controller.add(event);
           context.go("/calendar");
         }
         if (value == 3) {
