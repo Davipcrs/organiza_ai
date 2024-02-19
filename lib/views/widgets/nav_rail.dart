@@ -27,13 +27,14 @@ class NavRail extends ConsumerWidget {
           context.go("/todo");
         }
         if (value == 2) {
+          // Remeber to remove this debug appointment object
           Appointment appointment = Appointment();
           appointment.create(
             0,
             "title",
             DateTime.now(),
             DateTime.now().add(
-              const Duration(minutes: 120),
+              const Duration(days: 2),
             ),
             "Descrição",
             false,

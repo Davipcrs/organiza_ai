@@ -1,6 +1,5 @@
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
-import 'package:organiza_ai/views/widgets/calendar_widgets/day_widget.dart';
 
 class MonthWidget extends StatelessWidget {
   MonthWidget({super.key});
@@ -101,12 +100,27 @@ class MonthWidget extends StatelessWidget {
                     // Change to a ListView for multiple Events
                     ? Padding(
                         padding: const EdgeInsets.all(4.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              color: event[0].color),
-                          width: double.maxFinite,
-                          child: Center(child: Text(event[0].title)),
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          itemCount: event.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 4),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: event[index].color),
+                                child: Column(
+                                  children: [
+                                    Center(
+                                      child: Text(event[index].title),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
                         ),
                       )
                     : const SizedBox.shrink(),
@@ -128,7 +142,32 @@ class MonthWidget extends StatelessWidget {
                 // Change to a ListView for multiple Events
                 Container(
                   child: event.isNotEmpty
-                      ? Text(event[0].title)
+                      // Change to a ListView for multiple Events
+                      ? Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount: event.length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.only(bottom: 4),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      color: event[index].color),
+                                  child: Column(
+                                    children: [
+                                      Center(
+                                        child: Text(event[index].title),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        )
                       : const SizedBox.shrink(),
                 ),
               ],
@@ -147,7 +186,32 @@ class MonthWidget extends StatelessWidget {
                 ),
                 Container(
                   child: event.isNotEmpty
-                      ? Text(event[0].title)
+                      // Change to a ListView for multiple Events
+                      ? Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount: event.length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.only(bottom: 4),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      color: event[index].color),
+                                  child: Column(
+                                    children: [
+                                      Center(
+                                        child: Text(event[index].title),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        )
                       : const SizedBox.shrink(),
                 ),
               ],
@@ -158,3 +222,14 @@ class MonthWidget extends StatelessWidget {
     );
   }
 }
+
+
+/*
+Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: event[0].color),
+                          width: double.maxFinite,
+                          child: Center(child: Text(event[0].title)),
+                        ),
+*/

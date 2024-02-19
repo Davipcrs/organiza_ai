@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:organiza_ai/controllers/responsiness.dart';
 import 'package:organiza_ai/views/widgets/app_bar.dart';
 import 'package:organiza_ai/views/widgets/app_drawer.dart';
+import 'package:organiza_ai/views/widgets/calendar_widgets/day_widget.dart';
 import 'package:organiza_ai/views/widgets/calendar_widgets/month_widget.dart';
 import 'package:organiza_ai/views/widgets/nav_rail.dart';
 
@@ -23,7 +24,7 @@ class _CalendarViewState extends ConsumerState<CalendarView> {
         children: [
           const NavRail(),
           const VerticalDivider(thickness: 1, width: 1),
-          Expanded(child: MonthWidget()),
+          Expanded(child: isMobile ? DayWidget() : MonthWidget()),
         ],
       ),
       drawer: isMobile ? customAppDrawer(context, ref) : null,
