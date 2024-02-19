@@ -1,13 +1,27 @@
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 
-class DayWidget extends StatelessWidget {
-  final GlobalKey<WeekViewState>? state = GlobalKey();
+class DayWidget extends StatefulWidget {
+  final DateTime? init;
   //final double? width;
-  DayWidget({super.key});
+  const DayWidget({super.key, this.init});
+
+  @override
+  State<DayWidget> createState() => _DayWidgetState();
+}
+
+class _DayWidgetState extends State<DayWidget> {
+  final GlobalKey<WeekViewState>? state = GlobalKey();
+  late DateTime? initDay;
+  @override
+  void initState() {
+    initDay = widget.init;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    initDay ??= DateTime.now();
     return DayView(
       key: state,
       controller: CalendarControllerProvider.of(context).controller,

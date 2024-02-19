@@ -24,7 +24,7 @@ class _CalendarViewState extends ConsumerState<CalendarView> {
         children: [
           const NavRail(),
           const VerticalDivider(thickness: 1, width: 1),
-          Expanded(child: isMobile ? DayWidget() : MonthWidget()),
+          Expanded(child: isMobile ? const DayWidget() : MonthWidget()),
         ],
       ),
       drawer: isMobile ? customAppDrawer(context, ref) : null,
