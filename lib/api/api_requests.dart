@@ -3,6 +3,7 @@ import 'package:fixnum/fixnum.dart';
 import 'package:organiza_ai/api/api_connect.dart';
 import 'package:organiza_ai/api/generated/notes_service.pbgrpc.dart';
 import 'package:organiza_ai/api/generated/todo_service.pbgrpc.dart';
+import 'package:organiza_ai/model/appointment.dart';
 import 'package:organiza_ai/model/note.dart';
 import 'package:organiza_ai/model/todo.dart';
 
@@ -128,4 +129,38 @@ class ApiRequests {
     await todoStub!.removeTodo(SearchTodoMessage(id: Int64(id)));
     return;
   }
+
+// =========================================================================
+// APPOINTMENTS
+// =========================================================================
+
+  Future<List<Appointment>> getAppointments() async {
+    List<Appointment> list = [];
+
+    return list;
+  }
+
+  Future<Appointment> addAppointment(Appointment appointment) async {
+    return Appointment();
+  }
+
+  Future<Appointment> updateAppointment(Appointment appointment) async {
+    return Appointment();
+  }
+
+  Future<Appointment> getOneAppointment(int id) async {
+    Appointment appointment = Appointment();
+    appointment.convertToAppointment();
+
+    return appointment;
+  }
+
+  Future<void> removeAppointment(int id) async {
+    return;
+  }
 }
+
+// =========================================================================
+// APPOINTMENTS
+// =========================================================================
+  
