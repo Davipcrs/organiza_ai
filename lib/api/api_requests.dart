@@ -1,6 +1,7 @@
 // all api requests class
 import 'package:fixnum/fixnum.dart';
 import 'package:organiza_ai/api/api_connect.dart';
+import 'package:organiza_ai/api/generated/appointment_service.pbgrpc.dart';
 import 'package:organiza_ai/api/generated/notes_service.pbgrpc.dart';
 import 'package:organiza_ai/api/generated/todo_service.pbgrpc.dart';
 import 'package:organiza_ai/model/appointment.dart';
@@ -11,6 +12,7 @@ class ApiRequests {
   var apiConnectionInstance = createApiConnectionInstance();
   NotesServicesClient? noteStub;
   TodoServicesClient? todoStub;
+  AppointmentServicesClient? appointmentStub;
   ApiRequests({required String IP, required int PORT}) {
     apiConnectionInstance.setConfig(ip: IP, port: PORT);
     var connection = apiConnectionInstance.returnConnection();
@@ -144,7 +146,7 @@ class ApiRequests {
     return Appointment();
   }
 
-  Future<Appointment> updateAppointment(Appointment appointment) async {
+  Future<Appointment> editAppointment(Appointment appointment) async {
     return Appointment();
   }
 
@@ -156,6 +158,7 @@ class ApiRequests {
   }
 
   Future<void> removeAppointment(int id) async {
+    appointmentStub!.removeAppointment(SearchAppointmentRequest(id: Int64(id)));
     return;
   }
 }

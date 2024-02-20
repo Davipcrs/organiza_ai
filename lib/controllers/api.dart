@@ -3,6 +3,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:organiza_ai/api/api_requests.dart';
+import 'package:organiza_ai/model/appointment.dart';
 import 'package:organiza_ai/model/note.dart';
 import 'package:organiza_ai/model/todo.dart';
 
@@ -175,6 +176,67 @@ class _DeleteTodoNotifier extends AutoDisposeAsyncNotifier<void> {
 // APPOINTMENTS
 // =========================================================================
 
+final apiAppointmentsProvider = FutureProvider(
+  (ref) async {
+    return await ref.watch(apiServicesProvider).getAppointments();
+  },
+);
+
+final apiAddAppointmentProvider =
+    AsyncNotifierProvider.autoDispose<_AddAppointmentNotifier, void>(
+  _AddAppointmentNotifier.new,
+);
+
+final apiUpdateAppointmentProvider =
+    AsyncNotifierProvider.autoDispose<_UpdateAppointmentNotifier, void>(
+  _UpdateAppointmentNotifier.new,
+);
+
+final apiGetOneAppointmentProvider =
+    AsyncNotifierProvider.autoDispose<_GetOneAppointmentNotifier, void>(
+  _GetOneAppointmentNotifier.new,
+);
+
+final apiDeleteAppointmentProvider =
+    AsyncNotifierProvider.autoDispose<_DeleteAppointmentNotifier, void>(
+  _DeleteAppointmentNotifier.new,
+);
+
+class _AddAppointmentNotifier extends AutoDisposeAsyncNotifier<void> {
+  @override
+  build() {}
+
+  Future<Appointment> addAppointment(Appointment appointment) async {
+    return await ref.watch(apiServicesProvider).addAppointment(appointment);
+  }
+}
+
+class _UpdateAppointmentNotifier extends AutoDisposeAsyncNotifier<void> {
+  @override
+  build() {}
+
+  Future<Appointment> editAppointment(Appointment appointment) async {
+    return await ref.watch(apiServicesProvider).editAppointment(appointment);
+  }
+}
+
+class _GetOneAppointmentNotifier extends AutoDisposeAsyncNotifier<void> {
+  @override
+  build() {}
+
+  Future<Appointment> getOneAppointment(int id) async {
+    return await ref.watch(apiServicesProvider).getOneAppointment(id);
+  }
+}
+
+class _DeleteAppointmentNotifier extends AutoDisposeAsyncNotifier<void> {
+  @override
+  build() {}
+
+  Future<void> removeAppointment(int id) async {
+    await ref.watch(apiServicesProvider).removeAppointment(id);
+  }
+}
 
 
 //https://github.com/Davipcrs/parking-app/blob/master/lib/controller/providers/api_services_provider.dart
