@@ -23,6 +23,7 @@ class _DayWidgetState extends State<DayWidget> {
   Widget build(BuildContext context) {
     initDay ??= DateTime.now();
     return DayView(
+      initialDay: initDay,
       key: state,
       controller: CalendarControllerProvider.of(context).controller,
       heightPerMinute: 1,

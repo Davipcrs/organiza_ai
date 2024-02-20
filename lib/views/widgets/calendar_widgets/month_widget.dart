@@ -1,5 +1,6 @@
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class MonthWidget extends StatelessWidget {
   MonthWidget({super.key});
@@ -15,6 +16,9 @@ class MonthWidget extends StatelessWidget {
       controller: CalendarControllerProvider.of(context).controller,
       borderColor: Theme.of(context).colorScheme.primary,
       cellAspectRatio: 1.75,
+      onCellTap: (events, date) {
+        context.go("/calendar/day", extra: date);
+      },
       headerBuilder: (date) {
         return Container(
           color: Theme.of(context).colorScheme.background,
