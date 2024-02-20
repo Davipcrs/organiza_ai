@@ -1,4 +1,3 @@
-import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,7 +5,6 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:organiza_ai/controllers/api.dart';
 import 'package:organiza_ai/controllers/responsiness.dart';
-import 'package:organiza_ai/model/appointment.dart';
 import 'package:organiza_ai/model/todo.dart';
 
 class NavRail extends ConsumerWidget {
@@ -27,21 +25,6 @@ class NavRail extends ConsumerWidget {
           context.go("/todo");
         }
         if (value == 2) {
-          // Remeber to remove this debug appointment object
-          Appointment appointment = Appointment();
-          appointment.create(
-            0,
-            "title",
-            DateTime.now(),
-            DateTime.now().add(
-              const Duration(days: 2),
-            ),
-            "Descrição",
-            false,
-            0xff5f2280,
-          );
-          var event = appointment.convertToCalendarEventData();
-          CalendarControllerProvider.of(context).controller.add(event);
           context.go("/calendar");
         }
         if (value == 3) {
