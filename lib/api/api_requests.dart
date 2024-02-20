@@ -19,6 +19,7 @@ class ApiRequests {
 
     noteStub = NotesServicesClient(connection);
     todoStub = TodoServicesClient(connection);
+    appointmentStub = AppointmentServicesClient(connection);
   }
 
 // =========================================================================
@@ -138,21 +139,47 @@ class ApiRequests {
 
   Future<List<Appointment>> getAppointments() async {
     List<Appointment> list = [];
+    var allAppointments =
+        appointmentStub!.getAllAppointments(emptyAppointment());
+    try {
+      var awaitedAppointments = await allAppointments;
+      for (var message in awaitedAppointments.appointment) {
+        Appointment appointment = Appointment();
+        appointment.convertToAppointment(message);
+        list.add(appointment);
+      }
+    } catch (e) {
+      print("ERROR: $e");
+    }
 
     return list;
   }
 
   Future<Appointment> addAppointment(Appointment appointment) async {
-    return Appointment();
+    var response =
+        await appointmentStub!.addAppointment(appointment.convertToAdd());
+    appointment.id = response.id.toInt();
+    return appointment;
   }
 
   Future<Appointment> editAppointment(Appointment appointment) async {
-    return Appointment();
+    appointment.convertToAppointment(
+      await appointmentStub!.editAppointment(
+        appointment.convertToMessage(),
+      ),
+    );
+    return appointment;
   }
 
   Future<Appointment> getOneAppointment(int id) async {
     Appointment appointment = Appointment();
-    appointment.convertToAppointment();
+    appointment.convertToAppointment(
+      await appointmentStub!.getAppointment(
+        SearchAppointmentRequest(
+          id: Int64(id),
+        ),
+      ),
+    );
 
     return appointment;
   }
@@ -162,8 +189,3 @@ class ApiRequests {
     return;
   }
 }
-
-// =========================================================================
-// APPOINTMENTS
-// =========================================================================
-  

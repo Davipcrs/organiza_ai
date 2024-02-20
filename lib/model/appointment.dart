@@ -1,5 +1,7 @@
 import 'package:calendar_view/calendar_view.dart';
+import 'package:fixnum/fixnum.dart';
 import 'package:flutter/material.dart';
+import 'package:organiza_ai/api/generated/appointment_service.pb.dart';
 
 class Appointment {
   late int? id;
@@ -24,9 +26,38 @@ class Appointment {
     }
   }
 
-  void convertToAppointment() {}
-  void convertToMessage() {}
-  void convertToAdd() {}
+  void convertToAppointment(AppointmentMessage message) {
+    DateTime? auxiliarStart = DateTime.tryParse(message.start);
+    DateTime? auxiliarEnd = DateTime.tryParse(message.end);
+    create(message.id as int, message.title, auxiliarStart!, auxiliarEnd!,
+        message.desc, message.canceled, message.color as int);
+  }
+
+  AppointmentMessage convertToMessage() {
+    AppointmentMessage message = AppointmentMessage(
+      id: Int64(id!),
+      title: title,
+      desc: desc,
+      start: start.toString(),
+      end: end.toString(),
+      canceled: canceled,
+      color: Int64(color!),
+    );
+    return message;
+  }
+
+  AddAppointmentMessage convertToAdd() {
+    AddAppointmentMessage message = AddAppointmentMessage(
+      title: title,
+      desc: desc,
+      start: start.toString(),
+      end: end.toString(),
+      canceled: canceled,
+      color: Int64(color!),
+    );
+    return message;
+  }
+
   CalendarEventData convertToCalendarEventData() {
     return CalendarEventData(
       title: title!,
