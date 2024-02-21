@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:organiza_ai/controllers/api.dart';
+import 'package:organiza_ai/controllers/calendar_controller.dart';
 import 'package:organiza_ai/model/appointment.dart';
 
 class MonthWidget extends ConsumerStatefulWidget {
@@ -43,6 +44,11 @@ class _MonthWidgetState extends ConsumerState<MonthWidget> {
           controller: controller,
           borderColor: Theme.of(context).colorScheme.primary,
           cellAspectRatio: 1.75,
+          onEventTap: (event, date) {
+            ref.read(editedAppointmentProvider.notifier).state =
+                event.event as Appointment;
+            context.go("/calendar/view");
+          },
           onCellTap: (events, date) {
             context.go("/calendar/day", extra: date);
           },
