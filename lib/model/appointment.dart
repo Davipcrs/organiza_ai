@@ -21,6 +21,9 @@ class Appointment {
     this.end = end;
     this.canceled = canceled;
     this.color = color;
+    if (color! == 0) {
+      this.color = 0xff008000;
+    }
     if (canceled == true) {
       this.color = 0xff4a4444; //Black color
     }
@@ -29,8 +32,8 @@ class Appointment {
   void convertToAppointment(AppointmentMessage message) {
     DateTime? auxiliarStart = DateTime.tryParse(message.start);
     DateTime? auxiliarEnd = DateTime.tryParse(message.end);
-    create(message.id as int, message.title, auxiliarStart!, auxiliarEnd!,
-        message.desc, message.canceled, message.color as int);
+    create(message.id.toInt(), message.title, auxiliarStart!, auxiliarEnd!,
+        message.desc, message.canceled, message.color.toInt());
   }
 
   AppointmentMessage convertToMessage() {
