@@ -10,6 +10,8 @@ class AddAppointmentWidget extends StatefulWidget {
 class _AddAppointmentWidgetState extends State<AddAppointmentWidget> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Column(
+      children: [Row()],
+    );
   }
 }

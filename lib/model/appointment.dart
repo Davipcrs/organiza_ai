@@ -70,6 +70,7 @@ class Appointment {
       endDate: end!,
       description: desc!,
       color: Color(color!),
+      event: this,
     );
   }
 }

@@ -51,7 +51,9 @@ class NavRail extends ConsumerWidget {
             ref.read(apiAddTodoProvider.notifier).addTodo(todo);
             ref.invalidate(apiTodosProvider);
           }
-          if (index == 2) {}
+          if (index == 2) {
+            context.go("/calendar/add");
+          }
         },
         child: const Center(child: Icon(Icons.add)),
       ),

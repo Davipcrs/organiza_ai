@@ -8,6 +8,7 @@ import 'package:organiza_ai/views/home.dart';
 import 'package:organiza_ai/views/main_view.dart';
 import 'package:organiza_ai/views/note_details_view.dart';
 import 'package:organiza_ai/views/todo_view.dart';
+import 'package:organiza_ai/views/widgets/calendar_widgets/add_appointment_widget.dart';
 
 final router = GoRouter(
   routes: [
@@ -57,6 +58,12 @@ final router = GoRouter(
       path: "/calendar/day",
       builder: (BuildContext context, GoRouterState state) {
         return DayCalendarView(init: state.extra as DateTime);
+      },
+    ),
+    GoRoute(
+      path: "/calendar/add",
+      builder: (BuildContext context, GoRouterState state) {
+        return AddAppointmentWidget();
       },
     ),
   ],

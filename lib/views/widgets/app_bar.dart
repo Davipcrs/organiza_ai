@@ -21,6 +21,9 @@ customAppBar(BuildContext context, WidgetRef ref) {
             ref.read(apiAddTodoProvider.notifier).addTodo(todo);
             ref.invalidate(apiTodosProvider);
           }
+          if (index == 2) {
+            context.go("/calendar/add");
+          }
         },
       ),
     ],

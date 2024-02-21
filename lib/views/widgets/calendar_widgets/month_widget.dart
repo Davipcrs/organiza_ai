@@ -6,7 +6,7 @@ import 'package:organiza_ai/controllers/api.dart';
 import 'package:organiza_ai/model/appointment.dart';
 
 class MonthWidget extends ConsumerStatefulWidget {
-  MonthWidget({super.key});
+  const MonthWidget({super.key});
 
   @override
   ConsumerState<MonthWidget> createState() => _MonthWidgetState();
@@ -14,7 +14,6 @@ class MonthWidget extends ConsumerStatefulWidget {
 
 class _MonthWidgetState extends ConsumerState<MonthWidget> {
   final GlobalKey<MonthViewState> state = GlobalKey();
-
   late AsyncValue appointmentList;
 
   void setData() {

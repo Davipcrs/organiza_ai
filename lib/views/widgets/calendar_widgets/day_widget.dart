@@ -1,7 +1,9 @@
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:organiza_ai/controllers/api.dart';
+import 'package:organiza_ai/controllers/calendar_controller.dart';
 import 'package:organiza_ai/model/appointment.dart';
 
 class DayWidget extends ConsumerStatefulWidget {
@@ -63,6 +65,15 @@ class _DayWidgetState extends ConsumerState<DayWidget> {
             decoration:
                 BoxDecoration(color: Theme.of(context).colorScheme.background),
           ),
+          onEventTap: (events, date) {
+            for (CalendarEventData event in events) {
+              if (event.date == date) {
+                ref.read(viewedAppointmentProvider.notifier).state =
+                    event.event as Appointment;
+                context.go("/calendar/view");
+              }
+            }
+          },
         );
       },
     );
