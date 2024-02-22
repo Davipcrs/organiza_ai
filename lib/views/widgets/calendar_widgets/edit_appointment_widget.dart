@@ -53,6 +53,7 @@ class _EditAppointmentWidgetState extends ConsumerState<EditAppointmentWidget> {
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0, left: 8.0, right: 8.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ElevatedButton(
                   onPressed: () {
@@ -97,10 +98,11 @@ class _EditAppointmentWidgetState extends ConsumerState<EditAppointmentWidget> {
             ),
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               ElevatedButton(
                 onPressed: () {
-                  context.go("/calendar");
+                  context.go("/calendar/view");
                 },
                 child: const Text("Retornar"),
               ),

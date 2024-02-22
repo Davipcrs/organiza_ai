@@ -47,8 +47,8 @@ class _ViewAppointmentWidgetState extends ConsumerState<ViewAppointmentWidget> {
               onPressed: () {
                 ref.watch(editedAppointmentProvider.notifier).state =
                     appointment;
-                ref.invalidate(viewedAppointmentProvider);
-                context.go("");
+                //ref.invalidate(viewedAppointmentProvider);
+                context.go("/calendar/edit");
               },
               child: const Text("Editar"),
             )

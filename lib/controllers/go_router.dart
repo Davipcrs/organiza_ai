@@ -5,6 +5,7 @@ import 'package:organiza_ai/views/add_note_view.dart';
 import 'package:organiza_ai/views/appointment_details_view.dart';
 import 'package:organiza_ai/views/calendar_view.dart';
 import 'package:organiza_ai/views/day_calendar_view.dart';
+import 'package:organiza_ai/views/edit_appointment_view.dart';
 import 'package:organiza_ai/views/edit_note_view.dart';
 import 'package:organiza_ai/views/home.dart';
 import 'package:organiza_ai/views/main_view.dart';
@@ -71,6 +72,12 @@ final router = GoRouter(
       path: "/calendar/view",
       builder: (BuildContext context, GoRouterState state) {
         return const AppointemntDetailsView();
+      },
+    ),
+    GoRoute(
+      path: "/calendar/edit",
+      builder: (BuildContext context, GoRouterState state) {
+        return const EditAppointmentView();
       },
     )
   ],

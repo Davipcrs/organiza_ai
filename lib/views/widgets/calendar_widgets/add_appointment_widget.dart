@@ -38,6 +38,7 @@ class _AddAppointmentWidgetState extends ConsumerState<AddAppointmentWidget> {
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0, left: 8.0, right: 8.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ElevatedButton(
                   onPressed: () {
@@ -47,16 +48,16 @@ class _AddAppointmentWidgetState extends ConsumerState<AddAppointmentWidget> {
                     );
                   },
                   child: Text(
-                      "Início: ${start.day}/${start.month}/${start.year} - ${start.hour}:${start.minute}"),
+                      "${start.day}/${start.month}/${start.year} - ${start.hour}:${start.minute}"),
                 ),
                 ElevatedButton(
                   onPressed: () {},
                   child: Text(
-                      "Fim: ${end.day}/${end.month}/${end.year} - ${end.hour}:${end.minute}"),
+                      "${end.day}/${end.month}/${end.year} - ${end.hour}:${end.minute}"),
                 ),
                 ElevatedButton(
                   onPressed: () {},
-                  child: Text("Color"),
+                  child: Text("Cor"),
                 ),
               ],
             ),
@@ -82,6 +83,7 @@ class _AddAppointmentWidgetState extends ConsumerState<AddAppointmentWidget> {
             ),
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               ElevatedButton(
                 onPressed: () {
