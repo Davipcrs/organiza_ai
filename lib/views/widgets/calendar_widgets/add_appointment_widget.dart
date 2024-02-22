@@ -46,11 +46,13 @@ class _AddAppointmentWidgetState extends ConsumerState<AddAppointmentWidget> {
                       lastDate: DateTime(2100),
                     );
                   },
-                  child: Text("init"),
+                  child: Text(
+                      "Início: ${start.day}/${start.month}/${start.year} - ${start.hour}:${start.minute}"),
                 ),
                 ElevatedButton(
                   onPressed: () {},
-                  child: Text("End"),
+                  child: Text(
+                      "Fim: ${end.day}/${end.month}/${end.year} - ${end.hour}:${end.minute}"),
                 ),
                 ElevatedButton(
                   onPressed: () {},

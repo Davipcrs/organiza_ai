@@ -41,8 +41,8 @@ class Appointment {
       id: Int64(id!),
       title: title,
       desc: desc,
-      start: start.toString(),
-      end: end.toString(),
+      start: start!.toIso8601String(),
+      end: end!.toIso8601String(),
       canceled: canceled,
       color: Int64(color!),
     );
@@ -53,8 +53,8 @@ class Appointment {
     AddAppointmentMessage message = AddAppointmentMessage(
       title: title,
       desc: desc,
-      start: start.toString(),
-      end: end.toString(),
+      start: start!.toIso8601String(),
+      end: end!.toIso8601String(),
       canceled: canceled,
       color: Int64(color!),
     );
