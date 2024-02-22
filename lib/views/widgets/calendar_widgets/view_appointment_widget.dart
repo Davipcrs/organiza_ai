@@ -15,12 +15,13 @@ class ViewAppointmentWidget extends ConsumerStatefulWidget {
 class _ViewAppointmentWidgetState extends ConsumerState<ViewAppointmentWidget> {
   @override
   Widget build(BuildContext context) {
-    Appointment appointment = ref.read(editedAppointmentProvider);
+    Appointment appointment = ref.read(viewedAppointmentProvider);
+
     return Column(
       children: [
         Center(
           child: Text(
-              "Dia: ${appointment.start!.day.toString()}/${appointment.start!.month.toString()}/${appointment.start!.year.toString()}"),
+              "Dia: ${appointment.start!.day.toString()}/${appointment.start!.month}/${appointment.start!.year.toString()}"),
         ),
         Row(
           children: [

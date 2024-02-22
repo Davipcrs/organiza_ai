@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:organiza_ai/controllers/api.dart';
 import 'package:organiza_ai/model/appointment.dart';
+import 'package:organiza_ai/views/widgets/date_time_picker.dart';
 
 class AddAppointmentWidget extends ConsumerStatefulWidget {
   const AddAppointmentWidget({super.key});
@@ -15,9 +16,16 @@ class AddAppointmentWidget extends ConsumerStatefulWidget {
 class _AddAppointmentWidgetState extends ConsumerState<AddAppointmentWidget> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descController = TextEditingController();
-  DateTime start = DateTime.now();
-  DateTime end = DateTime.now().add(const Duration(minutes: 30));
-  int color = 0;
+  DateTime? start = DateTime.now();
+  DateTime? end = DateTime.now().add(const Duration(minutes: 30));
+  int color = 0xff008000;
+
+  dateUpdate(startValue, endValue) {
+    setState(() {
+      start = startValue;
+      end = endValue;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,21 +49,27 @@ class _AddAppointmentWidgetState extends ConsumerState<AddAppointmentWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ElevatedButton(
-                  onPressed: () {
-                    DatePickerDialog(
-                      firstDate: DateTime(2000),
-                      lastDate: DateTime(2100),
-                    );
+                  onPressed: () async {
+                    start = await showDateTimePicker(context: context);
+                    dateUpdate(start, end);
                   },
                   child: Text(
-                      "${start.day}/${start.month}/${start.year} - ${start.hour}:${start.minute}"),
+                      "${start!.day}/${start!.month}/${start!.year} - ${start!.hour}:${start!.minute}"),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    end = await showDateTimePicker(context: context);
+                    dateUpdate(start, end);
+                  },
                   child: Text(
-                      "${end.day}/${end.month}/${end.year} - ${end.hour}:${end.minute}"),
+                      "${end!.day}/${end!.month}/${end!.year} - ${end!.hour}:${end!.minute}"),
                 ),
                 ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                      Color(color),
+                    ),
+                  ),
                   onPressed: () {},
                   child: Text("Cor"),
                 ),
@@ -92,13 +106,14 @@ class _AddAppointmentWidgetState extends ConsumerState<AddAppointmentWidget> {
                 child: const Text("Retornar"),
               ),
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   Appointment appointment = Appointment();
-                  appointment.create(0, titleController.text, start, end,
+                  appointment.create(0, titleController.text, start!, end!,
                       descController.text, false, color);
                   ref
                       .watch(apiAddAppointmentProvider.notifier)
                       .addAppointment(appointment);
+                  Future.delayed(Duration(milliseconds: 100));
                   ref.invalidate(apiAppointmentsProvider);
                   context.go("/calendar");
                 },

@@ -66,13 +66,10 @@ class _DayWidgetState extends ConsumerState<DayWidget> {
                 BoxDecoration(color: Theme.of(context).colorScheme.background),
           ),
           onEventTap: (events, date) {
-            for (CalendarEventData event in events) {
-              if (event.date == date) {
-                ref.read(viewedAppointmentProvider.notifier).state =
-                    event.event as Appointment;
-                context.go("/calendar/view");
-              }
-            }
+            ref.read(viewedAppointmentProvider.notifier).state =
+                events[0].event as Appointment;
+
+            context.go("/calendar/view");
           },
         );
       },

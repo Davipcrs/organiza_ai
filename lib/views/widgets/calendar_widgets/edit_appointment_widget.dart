@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:organiza_ai/controllers/api.dart';
 import 'package:organiza_ai/controllers/calendar_controller.dart';
 import 'package:organiza_ai/model/appointment.dart';
+import 'package:organiza_ai/views/widgets/date_time_picker.dart';
 
 class EditAppointmentWidget extends ConsumerStatefulWidget {
   const EditAppointmentWidget({super.key});
@@ -16,22 +17,35 @@ class EditAppointmentWidget extends ConsumerStatefulWidget {
 class _EditAppointmentWidgetState extends ConsumerState<EditAppointmentWidget> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descController = TextEditingController();
-  DateTime start = DateTime.now();
-  DateTime end = DateTime.now().add(const Duration(minutes: 30));
+  DateTime? start = DateTime.now();
+  DateTime? end = DateTime.now().add(const Duration(minutes: 30));
   int color = 0;
   bool canceled = false;
   late Appointment appointment;
 
+  dateUpdate(startValue, endValue) {
+    setState(() {
+      start = startValue;
+      end = endValue;
+    });
+  }
+
   @override
-  void initState() {
-    super.initState();
-    Appointment appointment = ref.watch(editedAppointmentProvider);
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    appointment = ref.watch(editedAppointmentProvider);
     titleController.text = appointment.title!;
     descController.text = appointment.desc!;
     start = appointment.start!;
     end = appointment.end!;
     color = appointment.color!;
     canceled = appointment.canceled!;
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
@@ -56,21 +70,27 @@ class _EditAppointmentWidgetState extends ConsumerState<EditAppointmentWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ElevatedButton(
-                  onPressed: () {
-                    DatePickerDialog(
-                      firstDate: DateTime(2000),
-                      lastDate: DateTime(2100),
-                    );
+                  onPressed: () async {
+                    start = await showDateTimePicker(context: context);
+                    dateUpdate(start, end);
                   },
                   child: Text(
-                      "Início: ${start.day}/${start.month}/${start.year} - ${start.hour}:${start.minute}"),
+                      "Início: ${start!.day}/${start!.month}/${start!.year} - ${start!.hour}:${start!.minute}"),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    end = await showDateTimePicker(context: context);
+                    dateUpdate(start, end);
+                  },
                   child: Text(
-                      "Fim: ${end.day}/${end.month}/${end.year} - ${end.hour}:${end.minute}"),
+                      "Fim: ${end!.day}/${end!.month}/${end!.year} - ${end!.hour}:${end!.minute}"),
                 ),
                 ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                      Color(color),
+                    ),
+                  ),
                   onPressed: () {},
                   child: Text("Cor"),
                 ),
@@ -108,17 +128,20 @@ class _EditAppointmentWidgetState extends ConsumerState<EditAppointmentWidget> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  appointment.title = titleController.text;
-                  appointment.desc = descController.text;
-                  appointment.start = start;
-                  appointment.end = end;
-                  appointment.canceled = canceled;
-                  appointment.color = color;
-                  ref
-                      .watch(apiUpdateAppointmentProvider.notifier)
-                      .editAppointment(appointment);
-                  ref.invalidate(apiAppointmentsProvider);
-                  context.go("/calendar");
+                  if (end!.isAfter(start!)) {
+                    appointment.title = titleController.text;
+                    appointment.desc = descController.text;
+                    appointment.start = start;
+                    appointment.end = end;
+                    appointment.canceled = canceled;
+                    appointment.color = color;
+                    ref
+                        .watch(apiUpdateAppointmentProvider.notifier)
+                        .editAppointment(appointment);
+                    Future.delayed(Duration(milliseconds: 100));
+                    ref.invalidate(apiAppointmentsProvider);
+                    context.go("/calendar");
+                  }
                 },
                 child: const Text("Editar"),
               )
