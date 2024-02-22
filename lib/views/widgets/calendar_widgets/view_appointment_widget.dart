@@ -44,7 +44,12 @@ class _ViewAppointmentWidgetState extends ConsumerState<ViewAppointmentWidget> {
               child: const Text("Retornar"),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                ref.watch(editedAppointmentProvider.notifier).state =
+                    appointment;
+                ref.invalidate(viewedAppointmentProvider);
+                context.go("");
+              },
               child: const Text("Editar"),
             )
           ],
