@@ -32,7 +32,6 @@ class _EditAppointmentWidgetState extends ConsumerState<EditAppointmentWidget> {
 
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     appointment = ref.watch(editedAppointmentProvider);
     titleController.text = appointment.title!;
@@ -41,11 +40,6 @@ class _EditAppointmentWidgetState extends ConsumerState<EditAppointmentWidget> {
     end = appointment.end!;
     color = appointment.color!;
     canceled = appointment.canceled!;
-  }
-
-  @override
-  void initState() {
-    super.initState();
   }
 
   @override
