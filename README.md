@@ -2,7 +2,7 @@
 
 A note taking, to do and appointments organizer app.
 
-(Project paused...)  
+(Almost done...)  
 
 ## Project Structure
 
@@ -12,3 +12,55 @@ lib folder contains the code for the app, the plataforms folders are auto-genera
 /lib/model/*- Contains the class data models for the application data.  
 /lib/views/widgets/* - Contains reusable widgets, this is used for creating responsiviness in the UI.  
 /lib/views/- Contains the views, "Widgets" made by the resuable widgets in the /lib/views/widgets/*.  
+
+## Using the Project  
+
+2 Steps:
+
+- Deploy the server  
+- Use the Windows, APK or Web to connect to the DB and use normally  
+
+### For deploying this Application do these steps  
+
+Clone this repo  
+
+```bash
+git clone https://github.com/Davipcrs/organiza_ai_server.git  
+```
+
+Change the directory and give permissions  
+
+```bash
+cd organiza_ai_server  
+sudo chmod +x ./install.sh  
+```
+
+**CAUTION!**
+
+The server IP needs to be changed in the docker-compose.yaml before running the ./install.sh  
+
+```bash
+./install.sh  
+```
+
+Open ports for the server to Work!  
+
+```bash
+# in ubuntu:
+sudo ufw allow 80, 443, 50051, 50052
+
+# in RHEL based linux (Firewalld):
+sudo firewall-cmd --permanent --add-port={80/tcp,443/tcp,50051/tcp,50052/tcp}
+sudo firewall-cmd --reload
+
+# You can override the ports on the docker compose and then override here.
+# If your linux distro do not use these firewalls service look into how open that ports.
+```
+
+### Using the App
+
+## (Bugs that i was trying to resolve)  
+
+For deploying this application in Web is necessary:  
+    - disable the system firewall as flutter tends to connect to random ports for the gRPC.  
+    - need to point a DNS name "organiza_ai.com" to the server IP.  
