@@ -59,8 +59,28 @@ sudo firewall-cmd --reload
 
 ### Using the App
 
+3 Base uses:  
+- Notes (With Markdown)  
+- Todo (for Simple tasks)  
+- Calendar (Events and Appointments)  
+
+The First Page you need to input the server IP:  
+![image](https://github.com/Davipcrs/organiza_ai/assets/77358718/ac879976-01f3-4182-b9a6-6bd81153a621)  
+
+Images:  
+![image](https://github.com/Davipcrs/organiza_ai/assets/77358718/14f74491-f903-4628-bfb4-c66954919689)  
+![image](https://github.com/Davipcrs/organiza_ai/assets/77358718/1ecafee9-c148-4aa2-8e3a-2857613e8454)  
+![image](https://github.com/Davipcrs/organiza_ai/assets/77358718/63155bda-332b-4d7e-b6dd-2d68ac01f396)  
+
 ## (Bugs that i was trying to resolve)  
 
 For deploying this application in Web is necessary:  
     - disable the system firewall as flutter tends to connect to random ports for the gRPC.  
     - need to point a DNS name "organiza_ai.com" to the server IP.  
+
+## Next Steps
+
+Implement intl  
+Implement color picker  
+Implement Multiple User Support  
+Implement Auto https  
